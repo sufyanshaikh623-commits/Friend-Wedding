@@ -1379,3 +1379,29 @@ a.calendar-action-btn:hover {
         background-color: transparent !important;
     }
 }
+
+/* ==========================================================================
+   BARAT & VALIMA BACKGROUND BLACK FIX (Force Reset)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Barat aur Valima ke sections, rows, columns aur cards se black background hatane ke liye */
+    section#barat, 
+    section#valima,
+    .barat-section, 
+    .valima-section, 
+    .event-section,
+    .events-wrapper,
+    div[class*="barat"],
+    div[class*="valima"],
+    div[class*="event"] {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
+
+    /* Agar flip card ya uske andar ka koi bhi wrapper black ho raha hai */
+    .flip-card,
+    .flip-card-inner {
+        background: transparent !important;
+        background-color: transparent !important;
+    }
+}
