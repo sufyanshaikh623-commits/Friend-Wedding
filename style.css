@@ -811,3 +811,99 @@ a:focus-visible, button:focus-visible{
     color: var(--emerald-deep) !important;
   }
 }
+/* =========================================================
+   BULLETPROOF VIP PASS MODAL CENTERING (Absolute Center Fix)
+   ========================================================= */
+
+.vip-pass-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(3, 10, 7, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  z-index: 999999999 !important;
+  display: block !important; /* Flex ki bajaye block taaki absolute centering fail na ho */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease !important;
+}
+
+.vip-pass-modal.is-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.vip-pass-card {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: linear-gradient(135deg, #0d2e23 0%, #071e17 100%) !important;
+  border: 2px solid var(--gold, #c9a227) !important;
+  border-radius: 20px !important;
+  width: 90% !important;
+  max-width: 420px !important;
+  padding: 40px 30px !important;
+  text-align: center !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 50px rgba(201, 162, 39, 0.35) !important;
+  color: #f6f0dd !important;
+  z-index: 1000000000 !important;
+  margin: 0 !important;
+}
+
+/* =========================================================
+   FINAL & GUARANTEED VIP MODAL & FLIP CARD BACK TEXT FIX
+   ========================================================= */
+
+/* VIP Modal ID & Class Center Alignment */
+#vipModal,
+.vip-pass-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(3, 10, 7, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 999999999 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease !important;
+}
+
+#vipModal.is-active,
+.vip-pass-modal.is-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* VIP Card Box Centering */
+.vip-pass-card {
+  position: relative !important;
+  margin: auto !important;
+  background: linear-gradient(135deg, #0d2e23 0%, #071e17 100%) !important;
+  border: 2px solid var(--gold, #c9a227) !important;
+  border-radius: 20px !important;
+  width: 90% !important;
+  max-width: 420px !important;
+  padding: 40px 30px !important;
+  text-align: center !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 50px rgba(201, 162, 39, 0.35) !important;
+  color: #f6f0dd !important;
+  z-index: 1000000000 !important;
+}
+
+/* Flip Card Back Text Color Fix (White/Ivory & Gold) */
+.flip-card-back, 
+.flip-card-back * {
+  color: #f6f0dd !important;
+}
+
+.flip-card-back h3, 
+.flip-card-back p, 
+.flip-card-back span {
+  color: #f6f0dd !important;
+}
