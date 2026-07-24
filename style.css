@@ -75,7 +75,7 @@ a:focus-visible, button:focus-visible{
    ========================================================= */
 .grain-overlay{
   position: fixed; inset:0; width:100%; height:100%;
-  z-index: 60; pointer-events:none; opacity: 0.04; mix-blend-mode: overlay;
+  z-index: 1; pointer-events:none; opacity: 0.04; mix-blend-mode: overlay;
 }
 
 .cursor-glow{
@@ -84,7 +84,7 @@ a:focus-visible, button:focus-visible{
   margin-left: -140px; margin-top: -140px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(201,162,39,0.14), transparent 70%);
-  pointer-events:none; z-index: 5; opacity:0;
+  pointer-events:none; z-index: 2; opacity:0;
   transition: opacity .4s ease; will-change: transform;
 }
 .cursor-glow.is-active{ opacity:1; }
@@ -129,7 +129,7 @@ a:focus-visible, button:focus-visible{
 /* =========================================================
    FLOATING PETALS
    ========================================================= */
-.petals{ position: fixed; inset:0; pointer-events:none; z-index: 2; overflow:hidden; }
+.petals{ position: fixed; inset:0; pointer-events:none; z-index: 1; overflow:hidden; }
 .petal{
   position:absolute; top:-8%;
   opacity:0;
@@ -147,14 +147,14 @@ a:focus-visible, button:focus-visible{
    SCROLL / RIBBON LANDING SCREEN
    ========================================================= */
 .scroll-screen{
-  position:fixed; inset:0; z-index: 50;
+  position:fixed; inset:0; z-index: 2000;
   display:flex; align-items:center; justify-content:center;
   background:
     radial-gradient(circle at 50% 20%, #123f2e 0%, var(--emerald-deep) 68%);
   padding: 24px;
-  transition: opacity 1.1s var(--ease), visibility 1.1s var(--ease);
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
 }
-.scroll-screen.is-open{ opacity:0; visibility:hidden; pointer-events:none; }
+.scroll-screen.is-open, .scroll-screen.is-opened { transform: translateY(-100%); opacity: 0.95; pointer-events:none; }
 
 .scroll-card{
   position:relative;
@@ -203,8 +203,13 @@ a:focus-visible, button:focus-visible{
   display:flex; flex-direction:column; align-items:center; gap: 14px;
   color: var(--gold-light);
   margin: 0 auto;
+  position: relative !important;
+  z-index: 9999 !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
   transition: transform .4s var(--ease);
 }
+.ribbon-btn * { pointer-events: none !important; }
 .ribbon-btn:hover{ transform: translateY(-3px); }
 .ribbon-knot{ display:block; filter: drop-shadow(0 0 10px rgba(201,162,39,0.35)); }
 .bow-left, .bow-right{ transition: transform .8s var(--ease), opacity .8s var(--ease); transform-origin: 40px 30px; }
@@ -316,14 +321,13 @@ a:focus-visible, button:focus-visible{
 .mq-dot{ font-size: 12px; opacity:.7; }
 @keyframes marqueeScroll{ to{ transform: translateX(-50%); } }
 
-/* ---------- SILK DIVIDERS (diagonal clip) ---------- */
+/* ---------- SILK DIVIDERS ---------- */
 .silk-divider{ height: 56px; position:relative; }
 .silk-divider--a{ background: linear-gradient(180deg, transparent, rgba(201,162,39,0.05)); clip-path: polygon(0 100%, 100% 0, 100% 100%); }
 .silk-divider--b{ background: linear-gradient(180deg, rgba(201,162,39,0.05), transparent); clip-path: polygon(0 0, 100% 100%, 0 100%); }
 
-/* ---------- COUNTDOWN (circular rings) ---------- */
+/* ---------- COUNTDOWN ---------- */
 .countdown-section{ padding: 100px 24px 90px; text-align:center; }
-
 .countdown{ display:flex; align-items:center; justify-content:center; gap: 22px; flex-wrap: wrap; max-width: 640px; margin: 0 auto; }
 
 .cd-ring{ position:relative; width: 108px; height: 108px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
@@ -343,7 +347,6 @@ a:focus-visible, button:focus-visible{
 
 /* ---------- TIMELINE ---------- */
 .story-section{ padding: 20px 24px 100px; }
-
 .timeline{ position: relative; max-width: 760px; margin: 0 auto; padding-top: 10px; }
 .timeline-line{
   position:absolute; left: 50%; top:0; bottom:0; width: 1px;
@@ -380,16 +383,16 @@ a:focus-visible, button:focus-visible{
 
 /* ---------- COUPLE — FLIP CARDS ---------- */
 .couple-section{ padding: 20px 24px 100px; }
-
 .couple-grid{ display:flex; align-items:center; justify-content:center; gap: 40px; max-width: 980px; margin: 0 auto; flex-wrap: wrap; }
 
 .flip-card{
-  width: 290px; height: 380px; perspective: 1200px; display:block; padding:0;
+  width: 290px; height: 380px; perspective: 1200px; display:block; padding:0; background: transparent;
 }
 .flip-inner{
   position:relative; width:100%; height:100%;
   transform-style: preserve-3d;
   transition: transform .8s var(--ease);
+  background: transparent;
 }
 .flip-card:hover .flip-inner, .flip-card.is-flipped .flip-inner{ transform: rotateY(180deg); }
 
@@ -422,14 +425,12 @@ a:focus-visible, button:focus-visible{
 .couple-name{ font-size: 27px; color: var(--ivory); margin-bottom: 4px; }
 .couple-role{ font-family: var(--font-label); font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-light); margin: 0; }
 .couple-bio{ font-size: 16px; line-height: 1.75; color: var(--text-soft); padding: 0 6px; }
-
 .couple-and{ font-family: var(--font-script); font-size: 72px; color: var(--gold); line-height: 1; text-shadow: 0 0 24px rgba(201,162,39,0.4); }
 @media (max-width: 720px){ .couple-and{ display:none; } }
 
 /* ---------- EVENTS ---------- */
-.events-section{ padding: 20px 24px 100px; }
-
-.events-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px; max-width: 860px; margin: 0 auto; }
+.events-section{ padding: 20px 24px 100px; background: transparent; }
+.events-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px; max-width: 860px; margin: 0 auto; background: transparent; }
 .event-card{
   position: relative; padding: 42px 30px; text-align:center;
   border: 1px solid rgba(201,162,39,0.22);
@@ -453,6 +454,7 @@ a:focus-visible, button:focus-visible{
 .event-card h3{ font-size: 22px; color: var(--ivory); margin-bottom: 14px; }
 .event-when{ font-size: 15px; color: var(--gold-light); line-height: 1.6; margin: 0 0 10px; }
 .event-where{ font-size: 15px; color: var(--text-soft); line-height: 1.6; margin: 0 0 20px; }
+
 .ghost-btn{
   display:inline-block; padding: 10px 22px; font-family: var(--font-label);
   font-size: 13px; letter-spacing: .16em; text-transform: uppercase;
@@ -496,7 +498,7 @@ a:focus-visible, button:focus-visible{
 .footer-date{ position:relative; font-family: var(--font-label); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-mute); }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE & MOBILE POLISH
    ========================================================= */
 @media (max-width: 720px){
   .hero{ padding-top: 100px; }
@@ -517,7 +519,7 @@ a:focus-visible, button:focus-visible{
 .blessings-section {
     padding: 60px 20px;
     text-align: center;
-    background: linear-gradient(to bottom, #0b2219, #05140e); /* Deep Elegant Green */
+    background: linear-gradient(to bottom, #071e17, #05140e);
 }
 
 .blessings-container {
@@ -530,13 +532,12 @@ a:focus-visible, button:focus-visible{
     overflow-y: auto;
     margin-bottom: 25px;
     padding: 15px;
-    border: 1px solid rgba(212, 175, 55, 0.3); /* Soft Gold Border */
+    border: 1px solid rgba(212, 175, 55, 0.3);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.03);
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Custom Scrollbar for Premium Look */
 .messages-display::-webkit-scrollbar {
     width: 5px;
 }
@@ -570,7 +571,6 @@ a:focus-visible, button:focus-visible{
     font-weight: 600;
 }
 
-/* Form Styles */
 .blessing-form .input-group {
     margin-bottom: 15px;
 }
@@ -615,469 +615,6 @@ a:focus-visible, button:focus-visible{
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
-}
-
-.ribbon-btn, .ribbon-btn * {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-}
-
-.grain-overlay {
-  position: fixed; 
-  inset: 0; 
-  width: 100%; 
-  height: 100%;
-  z-index: 1; /* <-- Isko 60 se badal kar 1 kar dein taaki yeh sabse peeche chala jaye */
-  pointer-events: none !important; /* Force pointer events to none */
-  opacity: 0.04; 
-  mix-blend-mode: overlay;
-}
-
-/* Safe side ke liye ribbon button ka clickable area bada aur upar kar dete hain */
-.ribbon-btn {
-  position: relative !important;
-  z-index: 1000 !important;
-  cursor: pointer !important;
-  pointer-events: auto !important;
-}
-
-
-/* =========================================================
-   LAYER OVERRIDE FOR BLOCKING ISSUES
-   ========================================================= */
-.grain-overlay {
-  position: fixed !important; 
-  inset: 0 !important; 
-  width: 100% !important; 
-  height: 100% !important;
-  z-index: 1 !important; /* Forces the grain behind the interactive elements */
-  pointer-events: none !important; 
-}
-
-.scroll-screen {
-  z-index: 50 !important;
-  pointer-events: auto !important;
-}
-
-.scroll-card {
-  position: relative !important;
-  z-index: 55 !important;
-}
-
-.ribbon-btn {
-  position: relative !important;
-  z-index: 9999 !important; /* Brings the click area to the absolute top layer */
-  cursor: pointer !important;
-  pointer-events: auto !important;
-}
-
-.ribbon-btn * {
-  pointer-events: none !important; /* Prevents inner SVG paths from absorbing the click event */
-}
-
-/* Premium Wedding Buttons Style */
-.wedding-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  margin: 10px 5px;
-  border-radius: 30px;
-  border: 1px solid var(--gold-light, #d4af37);
-  background: transparent;
-  color: var(--gold-light, #d4af37);
-  font-family: inherit;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-  text-decoration: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  z-index: 60; /* Taaki click layer issue na kare */
-}
-
-.wedding-btn:hover {
-  background: var(--gold-light, #d4af37);
-  color: #000; /* Ya aapke theme ka dark color */
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-  transform: translateY(-2px);
-}
-
-/* Fix Calendar Button Hover State */
-button.calendar-action-btn {
-  position: relative;
-  z-index: 10;
-  pointer-events: auto !important;
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
-}
-
-button.calendar-action-btn:hover {
-  background-color: #f0d78c !important; /* var(--gold-light) */
-  color: #0d0d0d !important; /* var(--bg-dark) */
-  border-color: #f0d78c !important;
-  box-shadow: 0 0 15px rgba(240, 215, 140, 0.4);
-  transform: translateY(-2px);
-}
-
-/* 1. Layers dynamic interaction fix */
-.petals {
-  position: fixed; 
-  top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none !important; /* Yeh line mouse ko block nahi karne degi */
-  z-index: 1; /* Isko peeche le gaye */
-}
-
-.cursor-glow {
-  position: fixed; 
-  pointer-events: none !important; /* Yeh line bhi mouse ko block nahi karegi */
-  z-index: 2;
-}
-
-/* 2. Events section aur Cards ko upar lana */
-#events {
-  position: relative;
-  z-index: 999 !important; /* Taaki event section sabse upar rahe */
-}
-
-.event-card {
-  position: relative;
-  z-index: 1000 !important;
-}
-
-/* 3. Button Hover Action Overhaul */
-.calendar-action-btn {
-  position: relative;
-  z-index: 1001 !important;
-  pointer-events: auto !important; /* Force interactive state */
-  cursor: pointer !important;
-}
-
-.calendar-action-btn:hover {
-  background: #f0d78c !important; /* var(--gold-light) */
-  color: #0d0d0d !important; /* var(--bg-dark) */
-  border-color: #f0d78c !important;
-  box-shadow: 0 0 15px rgba(240, 215, 140, 0.5);
-}
-
-/* Complete Global Force Fix for Calendar Button Hover */
-button.calendar-action-btn {
-  display: block !important;
-  width: 100% !important;
-  border: 1px solid rgba(240, 215, 140, 0.4) !important;
-  color: #f5f5f7 !important;
-  padding: 10px 0 !important;
-  font-size: 0.85rem !important;
-  letter-spacing: 1px !important;
-  text-transform: uppercase !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
-  margin-bottom: 10px !important;
-  font-family: inherit !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-/* Force Hover State With Solid Gold & Glow */
-button.calendar-action-btn:hover {
-  background-color: #f0d78c !important; /* Solid Gold Fill */
-  color: #0d0d0d !important;             /* Dark Text like Navigate button */
-  border-color: #f0d78c !important;
-  box-shadow: 0 0 20px rgba(240, 215, 140, 0.8) !important; /* Glow Effect */
-}
-
-
-/* ================= CINEMATIC CURTAIN & BUTTON REPAIR ================= */
-.scroll-screen {
-  position: fixed; 
-  inset: 0; 
-  background: var(--bg-dark, #0d0d0d); 
-  z-index: 2000;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-}
-
-.scroll-screen.is-opened { 
-  transform: translateY(-100%); 
-  opacity: 0.95;
-}
-
-/* Calendar & Navigate Button Matching Hover */
-.ghost-btn.calendar-action-btn,
-button.calendar-action-btn,
-a.calendar-action-btn {
-  display: block !important;
-  width: 100% !important;
-  border: 1px solid rgba(240, 215, 140, 0.4) !important;
-  color: #f5f5f7 !important;
-  padding: 10px 0 !important;
-  font-size: 0.85rem !important;
-  letter-spacing: 1px !important;
-  text-transform: uppercase !important;
-  text-decoration: none !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
-  margin-bottom: 10px !important;
-  font-family: inherit !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-.ghost-btn.calendar-action-btn:hover,
-button.calendar-action-btn:hover,
-a.calendar-action-btn:hover {
-  background-color: #f0d78c !important;
-  color: #0d0d0d !important;
-  border-color: #f0d78c !important;
-  box-shadow: 0 0 20px rgba(240, 215, 140, 0.8) !important;
-}
-
-
-/* ================= CINEMATIC CURTAIN & GOLDEN LIGHT SWEEP ================= */
-.scroll-screen {
-  position: fixed; 
-  inset: 0; 
-  background: var(--bg-dark, #0d0d0d); 
-  z-index: 2000;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-}
-
-.scroll-screen.is-opened { 
-  transform: translateY(-100%); 
-  opacity: 0.95;
-}
-
-/* Golden Shine Flash on Card during opening */
-.scroll-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.scroll-card::after {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%; width: 200%; height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 45%,
-    rgba(240, 215, 140, 0.3) 50%,
-    transparent 55%
-  );
-  transform: rotate(30deg) translateX(-100%);
-  transition: transform 1s ease-in-out;
-}
-
-.scroll-screen.is-opened .scroll-card::after {
-  transform: rotate(30deg) translateX(100%);
-}
-
-/* 3D Tilt & Holographic Shine Effect for Couple Cards */
-.flip-card {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: transform 0.1s ease-out;
-  cursor: pointer;
-}
-
-.flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-front, .flip-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.flip-back {
-  transform: rotateY(180deg);
-}
-
-/* Holographic Gold Shine Overlay */
-.flip-front::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,215,0,0) 0%, rgba(255,215,0,0.25) 50%, rgba(255,215,0,0) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.flip-front:hover::after {
-  opacity: 1;
-}
-
-/* Golden Fireworks Sparkle Effect */
-.firework-spark {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff 0%, #f0d78c 50%, #8a6a20 100%);
-  pointer-events: none;
-  z-index: 99999;
-  animation: fireworkExplode 0.8s ease-out forwards;
-}
-
-@keyframes fireworkExplode {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--dx), var(--dy)) scale(0.2);
-    opacity: 0;
-  }
-}
-
-/* VIP Digital Guest Pass Modal */
-.vip-pass-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 10, 5, 0.85);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-
-.vip-pass-modal.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.vip-pass-card {
-  background: linear-gradient(135deg, #0d1f12 0%, #050a05 100%);
-  border: 2px solid var(--gold, #f0d78c);
-  border-radius: 20px;
-  width: 90%;
-  max-width: 400px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 30px rgba(240,215,140,0.2);
-  position: relative;
-  color: #fff;
-}
-
-.vip-pass-header {
-  font-family: 'Cormorant SC', serif;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
-  color: var(--gold, #f0d78c);
-  margin-bottom: 15px;
-}
-
-.vip-pass-title {
-  font-family: 'Italiana', serif;
-  font-size: 2rem;
-  margin-bottom: 5px;
-  color: #fff;
-}
-
-.vip-pass-subtitle {
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-bottom: 25px;
-}
-
-.vip-guest-box {
-  background: rgba(255,255,255,0.05);
-  border: 1px dashed rgba(240,215,140,0.4);
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.vip-guest-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.6;
-}
-
-.vip-guest-name-display {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
-  color: var(--gold, #f0d78c);
-  font-weight: 600;
-  margin-top: 5px;
-}
-
-.vip-pass-details {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  opacity: 0.9;
-}
-
-.vip-close-btn {
-  background: transparent;
-  border: 1px solid var(--gold, #f0d78c);
-  color: var(--gold, #f0d78c);
-  padding: 10px 25px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.vip-close-btn:hover {
-  background: var(--gold, #f0d78c);
-  color: #000;
-}
-
-/* Trigger Button style inside HTML or floating */
-.vip-trigger-container {
-  text-align: center;
-  margin: 30px 0;
-}
-
-/* VIP Pass Trigger Button Fixed */
-.vip-trigger-container {
-  text-align: center;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.btn-vip-trigger {
-  background: transparent;
-  border: 1px solid var(--gold, #f0d78c);
-  color: var(--gold, #f0d78c);
-  font-family: 'Cormorant SC', serif;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  padding: 14px 35px;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.btn-vip-trigger:hover {
-  background: var(--gold, #f0d78c);
-  color: #000;
-  box-shadow: 0 0 20px rgba(240,215,140,0.4);
 }
 
 /* VIP Digital Guest Pass Modal */
@@ -1177,7 +714,7 @@ a.calendar-action-btn:hover {
   padding: 9px 18px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 0.85srem;
+  font-size: 0.85rem;
   transition: all 0.3s ease;
   font-family: inherit;
 }
@@ -1192,216 +729,85 @@ a.calendar-action-btn:hover {
   opacity: 0.8;
 }
 
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  #vipModal, #vipModal * {
-    visibility: visible;
-  }
-  #vipModal {
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #050a05 !important;
-  }
-  .vip-actions {
-    display: none !important;
-  }
-}
-
-/* Mobile Glow Effect Fix */
+/* =========================================================
+   MOBILE FIXES: BACKGROUND, FONT SIZE & FLIP CARDS
+   ========================================================= */
 @media (max-width: 768px) {
-  .vip-pass-card, 
-  .event-card, 
-  .countdown-box,
-  .story-card {
-    box-shadow: 0 0 15px rgba(240, 215, 140, 0.3), inset 0 0 15px rgba(240, 215, 140, 0.1) !important;
+  /* 1. Website Global Font thoda sa bara */
+  body, p, li, a {
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+  }
+  h1 { font-size: 34px !important; }
+  h2 { font-size: 28px !important; }
+  h3 { font-size: 22px !important; }
+
+  /* 2. Barat & Valima Section Background Theme Restore (No Black Background) */
+  section#barat, 
+  section#valima,
+  .barat-section, 
+  .valima-section, 
+  .events-section,
+  .events-grid,
+  .event-card {
+    background-color: var(--emerald-deep) !important;
+    background: var(--emerald-deep) !important;
+  }
+  
+  .event-card {
+    background: linear-gradient(180deg, rgba(201,162,39,0.06), #071e17 80%) !important;
     border: 1px solid #f0d78c !important;
+    box-shadow: 0 0 15px rgba(240, 215, 140, 0.25) !important;
   }
-}
 
-/* Bride & Groom Text Alignment Fix on Mobile */
-.bride-groom-container, .couple-names {
-  text-align: center;
-  direction: ltr; /* Text ko seedha rakhne ke liye */
-  unicode-bidi: normal;
-}
+  /* 3. Flip Card & Text Alignment Fix for Mobile */
+  .flip-card {
+    background: transparent !important;
+    perspective: 1000px !important;
+    height: 360px !important;
+  }
 
-/* ========================================
-   Mobile Optimization: Event Cards Glow
-   ======================================== */
-@media (max-width: 768px) {
-    .event-card {
-        background: #0a1910 !important;
-        border: 1px solid #f0d78c !important;
-        border-radius: 15px !important;
-        padding: 20px !important;
-        margin-bottom: 20px !important;
-        /* Mobile ke liye heavy glow effect */
-        box-shadow: 0 0 20px rgba(240, 215, 140, 0.4), inset 0 0 10px rgba(240, 215, 140, 0.2) !important;
-    }
-}
+  .flip-inner {
+    transform-style: preserve-3d !important;
+  }
 
-/* ========================================
-   Mobile Optimization: Flip Card Back Fix
-   ======================================== */
-@media (max-width: 768px) {
-    .flip-card-back {
-        transform: rotateY(180deg);
-        background-color: #f0d78c !important;
-        color: #0a1910 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        text-align: center !important;
-        direction: ltr !important;
-        unicode-bidi: normal !important;
-        padding: 15px !important;
-    }
+  .flip-card:hover .flip-inner, 
+  .flip-card.is-flipped .flip-inner {
+    transform: rotateY(180deg) !important;
+  }
 
-    .flip-card-back h3,
-    .flip-card-back p,
-    .flip-card-back span {
-        direction: ltr !important;
-        text-align: center !important;
-        unicode-bidi: normal !important;
-        transform: none !important; /* Text ko ulta hone se bachane ke liye */
-    }
-}
+  .flip-front, .flip-back {
+    position: absolute !important;
+    inset: 0 !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    border-radius: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 20px !important;
+  }
 
-/* ==========================================================================
-   MOBILE FIX: FONT SIZE & SMOOTH FLIP CARD RETURN FIX
-   ========================================================================== */
-@media (max-width: 768px) {
-    
-    /* 1. Pori Website ka Font Size Thoda sa Bara */
-    body, p, li, a {
-        font-size: 17px !important;
-        line-height: 1.6 !important;
-    }
+  .flip-front {
+    background-color: var(--emerald-mid) !important;
+    transform: rotateY(0deg) !important;
+  }
 
-    h1 { font-size: 34px !important; }
-    h2 { font-size: 28px !important; }
-    h3 { font-size: 22px !important; }
+  .flip-back {
+    background-color: var(--gold-light) !important;
+    color: var(--emerald-deep) !important;
+    transform: rotateY(180deg) !important;
+    text-align: center !important;
+  }
 
-    /* 2. Flip Card Container aur 3D Space Fix */
-    .flip-card {
-        background-color: transparent !important;
-        perspective: 1000px !important;
-        width: 100% !important;
-        height: 350px !important; /* Apni zaroorat ke mutabiq height adjust kar sakte hain */
-        margin-bottom: 25px !important;
-    }
-
-    /* Flip Inner jo ghumta hai */
-    .flip-card-inner {
-        position: relative !important;
-        width: 100% !important;
-        height: 100% !important;
-        text-align: center !important;
-        transition: transform 0.6s ease !important;
-        transform-style: preserve-3d !important;
-    }
-
-    /* Jab card tap/hover ho toh 180 degree ghoome */
-    .flip-card:hover .flip-card-inner,
-    .flip-card.is-flipped .flip-card-inner {
-        transform: rotateY(180deg) !important;
-    }
-
-    /* Front aur Back dono faces ki proper setting */
-    .flip-card-front, 
-    .flip-card-back {
-        position: absolute !important;
-        width: 100% !important;
-        height: 100% !important;
-        backface-visibility: hidden !important;
-        -webkit-backface-visibility: hidden !important; /* Safari/Mobile ke liye */
-        border-radius: 15px !important;
-        box-sizing: border-box !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 20px !important;
-    }
-
-    /* Front Side Styling */
-    .flip-card-front {
-        background-color: #0a1910 !important;
-        color: #f0d78c !important;
-        border: 1px solid #f0d78c !important;
-        transform: rotateY(0deg) !important;
-        z-index: 2;
-    }
-
-    /* Back Side Styling - Isme text ko seedha rakhne ke liye 180 deg rakha hai */
-    .flip-card-back {
-        background-color: #f0d78c !important;
-        color: #0a1910 !important;
-        border: 1px solid #0a1910 !important;
-        transform: rotateY(180deg) !important;
-        text-align: center !important;
-    }
-
-    /* Back side ke andar ka text bilkul seedha aur readable rahe */
-    .flip-card-back h3,
-    .flip-card-back p,
-    .flip-card-back span {
-        transform: none !important; /* Text ko ulta hone se bachata hai */
-        direction: ltr !important;
-        text-align: center !important;
-        color: #0a1910 !important;
-        width: 100% !important;
-    }
-}
-
-/* ==========================================================================
-   BARAT & VALIMA SECTION BACKGROUND FIX
-   ========================================================================== */
-@media (max-width: 768px) {
-    /* Barat aur Valima ke sections ya unke containers ko wapas original theme color dein */
-    .barat-section, 
-    .valima-section, 
-    .events-container,
-    .wedding-events {
-        background-color: transparent !important; /* Ya agar koi specific theme color tha jaise #0a1910 ya dark green, toh woh yahan likhein */
-    }
-
-    /* Agar flip card ke piche ka background black ho gaya hai, toh usay transparent karein */
-    .flip-card {
-        background-color: transparent !important;
-    }
-
-    .flip-card-inner {
-        background-color: transparent !important;
-    }
-}
-
-/* ==========================================================================
-   BARAT & VALIMA BACKGROUND BLACK FIX (Force Reset)
-   ========================================================================== */
-@media (max-width: 768px) {
-    /* Barat aur Valima ke sections, rows, columns aur cards se black background hatane ke liye */
-    section#barat, 
-    section#valima,
-    .barat-section, 
-    .valima-section, 
-    .event-section,
-    .events-wrapper,
-    div[class*="barat"],
-    div[class*="valima"],
-    div[class*="event"] {
-        background: transparent !important;
-        background-color: transparent !important;
-    }
-
-    /* Agar flip card ya uske andar ka koi bhi wrapper black ho raha hai */
-    .flip-card,
-    .flip-card-inner {
-        background: transparent !important;
-        background-color: transparent !important;
-    }
+  /* Back side text seedha aur readable rakhne ke liye */
+  .flip-back h3, 
+  .flip-back p, 
+  .flip-back span {
+    transform: none !important;
+    direction: ltr !important;
+    text-align: center !important;
+    color: var(--emerald-deep) !important;
+  }
 }
