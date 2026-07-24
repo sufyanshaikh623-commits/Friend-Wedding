@@ -228,45 +228,41 @@
     <h2 class="section-title reveal">The Bride &amp; Groom</h2>
     
     <div class="couple-grid">
-  <!-- Groom Card (Sufyan) -->
-  <button class="flip-card" aria-label="Learn more about Sufyan">
-    <div class="flip-inner">
-      <div class="flip-front">
-        <!-- HTML Se Direct Photo -->
-        <img src="images/groom.jpg" alt="Groom" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;" />
-        <div class="flip-front-shade" style="z-index:1;"></div>
-        <h3 class="couple-name" style="z-index:2;">Sufyan</h3>
-        <p class="couple-role" style="z-index:2;">Groom</p>
-      </div>
-      <div class="flip-back">
-        <span class="flip-back-mono">S</span>
-        <p class="couple-bio">Grounded, ambitious, and ready to embark on this beautiful new journey with an open heart.</p>
-      </div>
-    </div>
-  </button>
+      <!-- Groom Card (Sufyan) -->
+      <button class="flip-card" aria-label="Learn more about Sufyan">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="images/groom.jpg" alt="Groom" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;" />
+            <div class="flip-front-shade" style="z-index:1;"></div>
+            <h3 class="couple-name" style="z-index:2;">Sufyan</h3>
+            <p class="couple-role" style="z-index:2;">Groom</p>
+          </div>
+          <div class="flip-back">
+            <span class="flip-back-mono">S</span>
+            <p class="couple-bio">Grounded, ambitious, and ready to embark on this beautiful new journey with an open heart.</p>
+          </div>
+        </div>
+      </button>
 
-  <span class="couple-and">&amp;</span>
+      <span class="couple-and">&amp;</span>
 
-  <!-- Bride Card (Fareeya) -->
-  <button class="flip-card" aria-label="Learn more about Fareeya">
-    <div class="flip-inner">
-      <div class="flip-front">
-        <!-- HTML Se Direct Photo -->
-        <img src="images/bride.jpg" alt="Bride" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;" />
-        <div class="flip-front-shade" style="z-index:1;"></div>
-        <h3 class="couple-name" style="z-index:2;">Fareeya</h3>
-        <p class="couple-role" style="z-index:2;">Bride</p>
-      </div>
-      <div class="flip-back">
-        <span class="flip-back-mono">F</span>
-        <p class="couple-bio">Kind-hearted, elegant, and looking forward to building a lifetime of joy and memories.</p>
-      </div>
+      <!-- Bride Card (Fareeya) -->
+      <button class="flip-card" aria-label="Learn more about Fareeya">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="images/bride.jpg" alt="Bride" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;" />
+            <div class="flip-front-shade" style="z-index:1;"></div>
+            <h3 class="couple-name" style="z-index:2;">Fareeya</h3>
+            <p class="couple-role" style="z-index:2;">Bride</p>
+          </div>
+          <div class="flip-back">
+            <span class="flip-back-mono">F</span>
+            <p class="couple-bio">Kind-hearted, elegant, and looking forward to building a lifetime of joy and memories.</p>
+          </div>
+        </div>
+      </button>
     </div>
-  </button>
-</div>
   </section>
-
-
 
   <!-- ---------- EVENTS ---------- -->
   <section class="events-section" id="events">
@@ -308,9 +304,8 @@
     </div>
   </section>
 
-
   <!-- PREMIUM INTERACTIVE BLESSINGS WALL -->
-<section id="blessingsWall" class="blessings-section reveal">
+  <section id="blessingsWall" class="blessings-section reveal">
     <div class="section-header">
         <span class="sub-title">DROP YOUR BLESSINGS</span>
         <h2>Shadi Mubarak Wall</h2>
@@ -318,7 +313,6 @@
     </div>
 
     <div class="blessings-container">
-        <!-- Live Messages Display Area -->
         <div class="messages-display" id="messagesDisplay">
             <div class="blessing-card">
                 <p class="guest-msg">"Wishing you both a lifetime of love, laughter, and endless happiness together! ✨"</p>
@@ -330,7 +324,6 @@
             </div>
         </div>
 
-        <!-- Input Form -->
         <form id="blessingForm" class="blessing-form">
             <div class="input-group">
                 <input type="text" id="guestName" placeholder="Aapka Naam / Your Name" required>
@@ -341,40 +334,38 @@
             <button type="submit" class="btn-gold">SEND BLESSINGS</button>
         </form>
     </div>
-</section>
+  </section>
 
-
-<!-- VIP Pass Trigger Button -->
-<div class="vip-trigger-container reveal">
-  <button id="openVipModalBtn" class="btn-vip-trigger">Generate Your VIP Guest Pass</button>
-</div>
-
-<!-- VIP Pass Modal HTML -->
-<div class="vip-pass-modal" id="vipModal">
-  <div class="vip-pass-card" id="vipPassCardContent">
-    <div class="vip-pass-header">OFFICIAL INVITATION PASS</div>
-    <h2 class="vip-pass-title">Sufyan &amp; Fareeya</h2>
-    <p class="vip-pass-subtitle">Wedding Celebration — November 2026</p>
-    
-    <div class="vip-guest-box">
-      <div class="vip-guest-label">Admit To Celebration</div>
-      <div class="vip-guest-name-display" id="passGuestName">Guest Name</div>
-    </div>
-
-    <div class="vip-pass-details">
-      <p><strong>Date:</strong> 16 November 2026</p>
-      <p><strong>Venue:</strong> Karachi, Pakistan</p>
-    </div>
-
-    <!-- Yeh raha Save aur Close ka button -->
-    <div class="vip-actions" style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-      <button class="vip-btn-action primary" id="printPassBtn" onclick="window.print()" style="background: #f0d78c; color: #000; border: 1px solid #f0d78c; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-family: inherit;">Save / Print Pass</button>
-      <button class="vip-btn-action" id="closeVipModalBtn" style="background: transparent; color: #f0d78c; border: 1px solid #f0d78c; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-family: inherit;">Close Pass</button>
-    </div>
+  <!-- VIP Pass Trigger Button (Fixed Visibility Styling) -->
+  <div class="vip-trigger-container reveal" style="text-align: center; padding: 30px 0;">
+    <button id="openVipModalBtn" class="btn-vip-trigger" style="background: #f0d78c; color: #111; border: 2px solid #f0d78c; padding: 14px 28px; border-radius: 30px; font-weight: 600; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(240,215,140,0.3); transition: all 0.3s ease;">Generate Your VIP Guest Pass</button>
   </div>
-</div>  <!-- ---------- RSVP ---------- -->
 
-  
+  <!-- VIP Pass Modal HTML -->
+  <div class="vip-pass-modal" id="vipModal">
+    <div class="vip-pass-card" id="vipPassCardContent">
+      <div class="vip-pass-header">OFFICIAL INVITATION PASS</div>
+      <h2 class="vip-pass-title">Sufyan &amp; Fareeya</h2>
+      <p class="vip-pass-subtitle">Wedding Celebration — November 2026</p>
+      
+      <div class="vip-guest-box">
+        <div class="vip-guest-label">Admit To Celebration</div>
+        <div class="vip-guest-name-display" id="passGuestName">Guest Name</div>
+      </div>
+
+      <div class="vip-pass-details">
+        <p><strong>Date:</strong> 16 November 2026</p>
+        <p><strong>Venue:</strong> Karachi, Pakistan</p>
+      </div>
+
+      <div class="vip-actions" style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+        <button class="vip-btn-action primary" id="printPassBtn" onclick="window.print()" style="background: #f0d78c; color: #000; border: 1px solid #f0d78c; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-family: inherit;">Save / Print Pass</button>
+        <button class="vip-btn-action" id="closeVipModalBtn" style="background: transparent; color: #f0d78c; border: 1px solid #f0d78c; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-family: inherit;">Close Pass</button>
+      </div>
+    </div>
+  </div>  
+
+  <!-- ---------- RSVP ---------- -->
   <section class="rsvp-section" id="rsvp">
     <p class="section-eyebrow reveal">Join Our Joy</p>
     <h2 class="section-title reveal">With Love & Blessings</h2>
@@ -393,12 +384,7 @@
     </div>
   </section>
 
-
-
   <!-- ---------- FOOTER ---------- -->
-   
-
-  
   <footer class="site-footer">
     <div class="footer-mandala" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#mandalaMotif"></use></svg></div>
     <div class="footer-monogram">S &amp; F</div>
