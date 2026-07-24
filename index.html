@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sufyan &amp; Fareeya — Wedding Invitation</title>
+    <meta name="description" content="Together with their families, Sufyan & Fareeya request the honour of your presence." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mrs+Saint+Delafield&family=Cormorant+SC:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= FILM GRAIN ================= -->
+<svg class="grain-overlay" aria-hidden="true">
+  <filter id="grainFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#grainFilter)"/>
+</svg>
+
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="scroll-progress" aria-hidden="true"><span id="scrollProgressBar"></span></div>
+
+<nav class="side-nav" id="sideNav" aria-label="Section navigation">
+  <a href="#hero" class="side-dot is-active" data-label="Home"><span></span></a>
+  <a href="#countdown" class="side-dot" data-label="Countdown"><span></span></a>
+  <a href="#story" class="side-dot" data-label="Our Story"><span></span></a>
+  <a href="#couple" class="side-dot" data-label="Couple"><span></span></a>
+  <a href="#events" class="side-dot" data-label="Events"><span></span></a>
+  <a href="#rsvp" class="side-dot" data-label="RSVP"><span></span></a>
+</nav>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- ================= SCROLL / RIBBON LANDING ================= -->
+<section class="scroll-screen" id="envelopeScreen">
+  <div class="scroll-card">
+    <div class="scroll-cap scroll-cap--top" aria-hidden="true"></div>
+
+    <div class="scroll-mandala" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><use href="#mandalaMotif"></use></svg>
+    </div>
+
+    <p class="scroll-eyebrow">You Are Cordially Invited</p>
+    <h1 class="scroll-names">Sufyan <span class="amp">&amp;</span> Fareeya</h1>
+    <p class="scroll-date">Sixteenth of November, Two Thousand Twenty-Six</p>
+
+    <button class="ribbon-btn" id="openInviteBtn" aria-label="Untie the ribbon to open your invitation">
+      <span class="ribbon-knot">
+        <svg viewBox="0 0 80 60" width="80" height="60" aria-hidden="true">
+          <path class="bow-left"  d="M40,30 C25,10 5,10 8,28 C10,42 28,38 40,30 Z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <path class="bow-right" d="M40,30 C55,10 75,10 72,28 C70,42 52,38 40,30 Z" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <circle class="bow-knot" cx="40" cy="30" r="5" fill="currentColor"/>
+          <path class="bow-tail-l" d="M36,34 L28,54" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <path class="bow-tail-r" d="M44,34 L52,54" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="ribbon-label">Untie The Ribbon</span>
+    </button>
+
+    <div class="scroll-cap scroll-cap--bottom" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- Shared SVG defs (mandala motif reused across page) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="mandalaMotif">
+      <g fill="none" stroke="currentColor" stroke-width="0.6">
+        <circle cx="100" cy="100" r="92"/>
+        <circle cx="100" cy="100" r="78"/>
+        <circle cx="100" cy="100" r="4"/>
+        <g id="petalGroup">
+          <path d="M100,22 C112,45 112,55 100,78 C88,55 88,45 100,22 Z"/>
+        </g>
+        <use href="#petalGroup" transform="rotate(30 100 100)"/>
+        <use href="#petalGroup" transform="rotate(60 100 100)"/>
+        <use href="#petalGroup" transform="rotate(90 100 100)"/>
+        <use href="#petalGroup" transform="rotate(120 100 100)"/>
+        <use href="#petalGroup" transform="rotate(150 100 100)"/>
+        <use href="#petalGroup" transform="rotate(180 100 100)"/>
+        <use href="#petalGroup" transform="rotate(210 100 100)"/>
+        <use href="#petalGroup" transform="rotate(240 100 100)"/>
+        <use href="#petalGroup" transform="rotate(270 100 100)"/>
+        <use href="#petalGroup" transform="rotate(300 100 100)"/>
+        <use href="#petalGroup" transform="rotate(330 100 100)"/>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+<!-- ================= MAIN SITE ================= -->
+<main class="site" id="siteMain">
+  <button class="music-toggle" id="musicToggle" aria-label="Toggle background music">
+    <span class="music-toggle-ring"></span>
+    <svg id="musicIcon" viewBox="0 0 24 24" width="18" height="18">
+      <path fill="currentColor" d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3" fill="currentColor"/>
+      <circle cx="18" cy="16" r="3" fill="currentColor"/>
+    </svg>
+  </button>
+<audio id="bgMusic" loop preload="auto">
+  <source src="audio/wedding-bg.mp3" type="audio/mpeg">
+</audio>
+
+  <!-- ---------- HERO ---------- -->
+  <header class="hero" id="hero">
+    <div class="hero-mandala hero-mandala--1" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#mandalaMotif"></use></svg></div>
+    <div class="hero-mandala hero-mandala--2" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#mandalaMotif"></use></svg></div>
+
+    <div class="hero-inner reveal">
+      <p class="hero-eyebrow">Together With Their Families</p>
+
+      <h1 class="hero-names">
+        <span class="foil-text">Sufyan</span>
+        <span class="hero-and">&amp;</span>
+        <span class="foil-text">Fareeya</span>
+      </h1>
+      <svg class="hero-underline" viewBox="0 0 340 20" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,12 C60,2 120,18 170,10 C220,2 280,16 338,8" fill="none" stroke="url(#foilStroke)" stroke-width="2" stroke-linecap="round"/>
+        <defs>
+          <linearGradient id="foilStroke" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#8a6a20"/>
+            <stop offset="50%" stop-color="#f0d78c"/>
+            <stop offset="100%" stop-color="#8a6a20"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <p class="hero-request">
+        Request the honour of your presence<br class="br-desktop"/>
+        to celebrate their wedding ceremony
+      </p>
+
+      <div class="hero-meta">
+        <p class="hero-date">16 November 2026 <span class="dot">✦</span> Monday</p>
+        <p class="hero-loc">Karachi, Pakistan</p>
+      </div>
+
+      <a href="#countdown" class="scroll-cue" aria-label="Scroll down">
+        <span></span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ---------- MARQUEE BAND ---------- -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Sufyan &amp; Fareeya</span><span class="mq-dot">✦</span>
+      <span>16 November 2026</span><span class="mq-dot">✦</span>
+      <span>Karachi, Pakistan</span><span class="mq-dot">✦</span>
+      <span>Sufyan &amp; Fareeya</span><span class="mq-dot">✦</span>
+      <span>16 November 2026</span><span class="mq-dot">✦</span>
+      <span>Karachi, Pakistan</span><span class="mq-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- ---------- SILK DIVIDERS ---------- -->
+  <div class="silk-divider silk-divider--a"></div>
+
+  <!-- ---------- COUNTDOWN ---------- -->
+  <section class="countdown-section" id="countdown">
+    <p class="section-eyebrow reveal">Save The Date</p>
+    <h2 class="section-title reveal">Counting Down To Forever</h2>
+
+    <div class="countdown reveal" id="countdown-timer">
+      <div class="cd-ring">
+        <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52"/></svg>
+        <span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span>
+      </div>
+      <div class="cd-ring">
+        <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52"/></svg>
+        <span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span>
+      </div>
+      <div class="cd-ring">
+        <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52"/></svg>
+        <span class="cd-num" id="cd-minutes">00</span><span class="cd-label">Min</span>
+      </div>
+      <div class="cd-ring">
+        <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52"/></svg>
+        <span class="cd-num" id="cd-seconds">00</span><span class="cd-label">Sec</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="silk-divider silk-divider--b"></div>
+
+  <!-- ---------- OUR STORY (TIMELINE) ---------- -->
+  <section class="story-section" id="story">
+    <p class="section-eyebrow reveal">Our Journey</p>
+    <h2 class="section-title reveal">How It All Began</h2>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">FAMILIES MET</span>
+          <p>Destiny brought our families together, and a beautiful connection was made with everyone's blessings.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item timeline-item--right reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <span class="timeline-year">ENGAGED - AUG 09 2025</span>
+          <p>Hamari engagement ho gayi! We promised to hold hands through all of life's laughs, dreams, and forever.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot timeline-dot--final"></div>
+        <div class="timeline-card timeline-card--final">
+          <span class="timeline-year">The Nikkah &amp; Wedding</span>
+          <p>Stepping into our forever journey on November 16, 2026, with love and blessings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- THE COUPLE ---------- -->
+  <section class="couple-section" id="couple">
+    <p class="section-eyebrow reveal">Meet The Couple</p>
+    <h2 class="section-title reveal">The Bride &amp; Groom</h2>
+    
+    <div class="couple-grid">
+  <!-- Groom Card (Sufyan) -->
+  <button class="flip-card" aria-label="Learn more about Sufyan">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <!-- HTML Se Direct Photo -->
+        <img src="images/groom.jpg" alt="Groom" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;" />
+        <div class="flip-front-shade" style="z-index:1;"></div>
+        <h3 class="couple-name" style="z-index:2;">Sufyan</h3>
+        <p class="couple-role" style="z-index:2;">Groom</p>
+      </div>
+      <div class="flip-back">
+        <span class="flip-back-mono">S</span>
+        <p class="couple-bio">Grounded, ambitious, and ready to embark on this beautiful new journey with an open heart.</p>
+      </div>
+    </div>
+  </button>
+
+  <span class="couple-and">&amp;</span>
+
+  <!-- Bride Card (Fareeya) -->
+  <button class="flip-card" aria-label="Learn more about Fareeya">
+    <div class="flip-inner">
+      <div class="flip-front">
+        <!-- HTML Se Direct Photo -->
+        <img src="images/bride.jpg" alt="Bride" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;" />
+        <div class="flip-front-shade" style="z-index:1;"></div>
+        <h3 class="couple-name" style="z-index:2;">Fareeya</h3>
+        <p class="couple-role" style="z-index:2;">Bride</p>
+      </div>
+      <div class="flip-back">
+        <span class="flip-back-mono">F</span>
+        <p class="couple-bio">Kind-hearted, elegant, and looking forward to building a lifetime of joy and memories.</p>
+      </div>
+    </div>
+  </button>
+</div>
+  </section>
+
+
+
+  <!-- ---------- EVENTS ---------- -->
+  <section class="events-section" id="events">
+    <p class="section-eyebrow reveal">Celebrations</p>
+    <h2 class="section-title reveal">Wedding Events</h2>
+    
+    <div class="events-grid reveal">
+      <!-- 1. BARAT CARD -->
+      <div class="event-card">
+        <div class="event-corner"></div>
+        <div class="event-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Barat</h3>
+        <p class="event-when">Saturday, Nov 14, 2026<br>09:00 PM</p>
+        <p class="event-where">Global Banquet, Shah Faisal Colony Karachi</p>
+        
+        <div class="event-actions" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <a href="https://maps.app.goo.gl/3GC1CYdh3oX5Bogw6" target="_blank" class="ghost-btn" style="display:block; text-align:center;">Navigate to Venue</a>
+          <a href="#" id="addBaratToCalendar" class="ghost-btn">Add to Calendar</a>
+        </div>
+      </div>
+
+      <!-- 2. VALIMA CARD -->
+      <div class="event-card">
+        <div class="event-corner"></div>
+        <div class="event-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Valima Reception</h3>
+        <p class="event-when">Monday, Nov 16, 2026<br>09:00 PM</p>
+        <p class="event-where">The Heaven Banquet, Gulistan-e-Johar Karachi</p>
+        
+        <div class="event-actions" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+          <a href="https://maps.app.goo.gl/r7MpGgNSJX8AiL4dA" target="_blank" class="ghost-btn" style="display:block; text-align:center;">Navigate to Venue</a>
+          <a href="#" id="addValimaToCalendar" class="ghost-btn">Add to Calendar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PREMIUM INTERACTIVE BLESSINGS WALL -->
+<section id="blessingsWall" class="blessings-section reveal">
+    <div class="section-header">
+        <span class="sub-title">DROP YOUR BLESSINGS</span>
+        <h2>Shadi Mubarak Wall</h2>
+        <p class="section-desc">Aapki duayein aur mohabbat hamare liye sabse bada tohfa hain. Leave a sweet message for our new beginning!</p>
+    </div>
+
+    <div class="blessings-container">
+        <!-- Live Messages Display Area -->
+        <div class="messages-display" id="messagesDisplay">
+            <div class="blessing-card">
+                <p class="guest-msg">"Wishing you both a lifetime of love, laughter, and endless happiness together! ✨"</p>
+                <h4 class="guest-name">- Imran & Family</h4>
+            </div>
+            <div class="blessing-card">
+                <p class="guest-msg">"Boohot bohot mubarak ho! May this new journey bring beautiful blessings into your lives."</p>
+                <h4 class="guest-name">- Sarah Khan</h4>
+            </div>
+        </div>
+
+        <!-- Input Form -->
+        <form id="blessingForm" class="blessing-form">
+            <div class="input-group">
+                <input type="text" id="guestName" placeholder="Aapka Naam / Your Name" required>
+            </div>
+            <div class="input-group">
+                <textarea id="guestMessage" rows="3" placeholder="Apni duayein likhein / Write your blessing here..." required></textarea>
+            </div>
+            <button type="submit" class="btn-gold">SEND BLESSINGS</button>
+        </form>
+    </div>
+</section>
+
+
+<!-- VIP Pass Trigger Button -->
+<div class="vip-trigger-container reveal">
+  <button id="openVipModalBtn" class="btn-vip-trigger">Generate Your VIP Guest Pass</button>
+</div>
+
+<!-- VIP Pass Modal HTML -->
+<div class="vip-pass-modal" id="vipModal">
+  <div class="vip-pass-card" id="vipPassCardContent">
+    <div class="vip-pass-header">OFFICIAL INVITATION PASS</div>
+    <h2 class="vip-pass-title">Sufyan &amp; Fareeya</h2>
+    <p class="vip-pass-subtitle">Wedding Celebration — November 2026</p>
+    
+    <div class="vip-guest-box">
+      <div class="vip-guest-label">Admit To Celebration</div>
+      <div class="vip-guest-name-display" id="passGuestName">Guest Name</div>
+    </div>
+
+    <div class="vip-pass-details">
+      <p><strong>Date:</strong> 16 November 2026</p>
+      <p><strong>Venue:</strong> Karachi, Pakistan</p>
+    </div>
+
+    <!-- Yeh raha Save aur Close ka button -->
+    <div class="vip-actions" style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
+      <button class="vip-btn-action primary" id="printPassBtn" onclick="window.print()" style="background: #f0d78c; color: #000; border: 1px solid #f0d78c; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-family: inherit;">Save / Print Pass</button>
+      <button class="vip-btn-action" id="closeVipModalBtn" style="background: transparent; color: #f0d78c; border: 1px solid #f0d78c; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-family: inherit;">Close Pass</button>
+    </div>
+  </div>
+</div>  <!-- ---------- RSVP ---------- -->
+
+  
+  <section class="rsvp-section" id="rsvp">
+    <p class="section-eyebrow reveal">Join Our Joy</p>
+    <h2 class="section-title reveal">With Love & Blessings</h2>
+    <div class="rsvp-inner reveal">
+      <p class="rsvp-text">Our celebration would be incomplete without you. Please grace our beautiful new beginning with your presence and blessings.</p>
+      
+      <a href="https://wa.me/923130402257?text=Salam!%20I%20will%20be%20attending%20Sufyan%20and%20Fareeya's%20wedding." target="_blank" class="whatsapp-btn">
+        <div class="whatsapp-pulse"></div>
+        SAY HELLO ON WHATSAPP
+      </a>
+      
+      <div class="separator-line">
+        <span></span><span class="sep-dot"></span><span></span>
+      </div>
+      <p class="rsvp-note">Aapki maujoodgi hamare liye sabse barri khushi hogi. Please save the date: November 16, 2026.</p>
+    </div>
+  </section>
+
+
+
+  <!-- ---------- FOOTER ---------- -->
+   
+
+  
+  <footer class="site-footer">
+    <div class="footer-mandala" aria-hidden="true"><svg viewBox="0 0 200 200"><use href="#mandalaMotif"></use></svg></div>
+    <div class="footer-monogram">S &amp; F</div>
+    <p class="footer-text">Together is a beautiful place to be.</p>
+    <p class="footer-date">16 . 11 . 2026</p>
+  </footer>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+<!-- VIP Pass Trigger Button -->
+<div class="vip-trigger-container reveal">
+  <button id="openVipModalBtn" class="btn-vip-trigger">Generate Your VIP Guest Pass</button>
+</div>
+
+<!-- VIP Pass Modal HTML -->
+<div class="vip-pass-modal" id="vipModal">
+  <div class="vip-pass-card" id="vipPassCardContent">
+    <div class="vip-pass-header">OFFICIAL INVITATION PASS</div>
+    <h2 class="vip-pass-title">Sufyan &amp; Fareeya</h2>
+    <p class="vip-pass-subtitle">Wedding Celebration — November 2026</p>
+    
+    <div class="vip-guest-box">
+      <div class="vip-guest-label">Admit To Celebration</div>
+      <div class="vip-guest-name-display" id="passGuestName">Honoured Guest</div>
+    </div>
+
+    <div class="vip-pass-details">
+      <p><strong>Date:</strong> 16 November 2026</p>
+      <p><strong>Venue:</strong> Karachi, Pakistan</p>
+    </div>
+
+<div class="vip-actions">
+  <button class="vip-btn-action primary" onclick="window.print()">Print / Save PDF</button>
+  <button class="vip-btn-action" id="closeVipModalBtn">Close</button>
+</div>
+
+</div>
+  </div>
+</div>
+
+<!-- html2canvas library for downloading pass as image -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
