@@ -619,21 +619,22 @@ a:focus-visible, button:focus-visible{
 
 /* VIP Digital Guest Pass Modal */
 .vip-pass-modal {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.85);
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 5, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
-.vip-pass-modal.active {
-    opacity: 1;
-    visibility: visible;
+.vip-pass-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .vip-pass-card {
@@ -907,25 +908,11 @@ a:focus-visible, button:focus-visible{
   color: #f6f0dd !important;
 }
 
-/* VIP Button Permanent Fix */
-.fixed-vip-btn, 
-.vip-trigger-container button#openVipModalBtn {
-    background: #f0d78c !important;
-    color: #111111 !important;
-    border: 2px solid #f0d78c !important;
-    padding: 14px 30px !important;
-    border-radius: 30px !important;
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    cursor: pointer !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    box-shadow: 0 4px 20px rgba(240, 215, 140, 0.4) !important;
-    text-shadow: none !important;
-}
-
-.fixed-vip-btn:hover {
-    background: #e5cb78 !important;
-    color: #000000 !important;
-    transform: translateY(-2px);
+.vip-trigger-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
 }
