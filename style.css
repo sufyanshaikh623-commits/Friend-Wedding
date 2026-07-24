@@ -1357,3 +1357,25 @@ a.calendar-action-btn:hover {
         width: 100% !important;
     }
 }
+
+/* ==========================================================================
+   BARAT & VALIMA SECTION BACKGROUND FIX
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Barat aur Valima ke sections ya unke containers ko wapas original theme color dein */
+    .barat-section, 
+    .valima-section, 
+    .events-container,
+    .wedding-events {
+        background-color: transparent !important; /* Ya agar koi specific theme color tha jaise #0a1910 ya dark green, toh woh yahan likhein */
+    }
+
+    /* Agar flip card ke piche ka background black ho gaya hai, toh usay transparent karein */
+    .flip-card {
+        background-color: transparent !important;
+    }
+
+    .flip-card-inner {
+        background-color: transparent !important;
+    }
+}
