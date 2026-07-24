@@ -1625,3 +1625,126 @@ a:focus-visible, button:focus-visible{
     color: var(--emerald-deep) !important;
   }
 }
+
+/* =========================================================
+   VIP Digital Guest Pass Modal — Fixed Layout & Visibility
+   ========================================================= */
+
+.vip-pass-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 10, 7, 0.92);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  padding: 20px;
+}
+
+.vip-pass-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.vip-pass-card {
+  background: linear-gradient(135deg, #0d2e23 0%, #071e17 100%);
+  border: 2px solid var(--gold, #c9a227);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(201, 162, 39, 0.25);
+  color: #f6f0dd;
+  position: relative;
+  margin: auto;
+}
+
+.vip-pass-header {
+  font-family: 'Cormorant SC', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--gold-light, #f0d78c);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.vip-pass-title {
+  font-family: 'Italiana', serif;
+  font-size: 30px;
+  color: #f6f0dd;
+  margin-bottom: 6px;
+}
+
+.vip-pass-subtitle {
+  font-size: 13px;
+  color: #cfd6c9;
+  opacity: 0.8;
+  margin-bottom: 24px;
+}
+
+.vip-guest-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(201, 162, 39, 0.5);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+.vip-guest-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8fa294;
+}
+
+.vip-guest-name-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: var(--gold-bright, #ffe9ad);
+  font-weight: 600;
+  margin-top: 6px;
+  text-shadow: 0 0 12px rgba(201, 162, 39, 0.4);
+}
+
+.vip-pass-details {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #cfd6c9;
+  margin-bottom: 24px;
+}
+
+.vip-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.vip-btn-action {
+  background: transparent;
+  border: 1px solid var(--gold, #c9a227);
+  color: var(--gold-light, #f0d78c);
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.vip-btn-action.primary {
+  background: var(--gold, #c9a227);
+  color: #071e17;
+  font-weight: 600;
+}
+
+.vip-btn-action:hover {
+  background: var(--gold-bright, #ffe9ad);
+  color: #071e17;
+  box-shadow: 0 0 15px rgba(201, 162, 39, 0.5);
+}
