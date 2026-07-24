@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       envelopeScreen.classList.add('is-opened');
       // Completely hide after transition so clicks pass through to main site
       setTimeout(() => {
-        envelopeScreen.style.display = 'none';
+        envelopeScreen.style.display = 'flex';
       }, 1200);
     }
     
