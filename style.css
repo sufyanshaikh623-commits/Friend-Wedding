@@ -314,3 +314,60 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   .events-grid { grid-template-columns: 1fr; }
   body, p, a { font-size: 17px !important; }
 }
+
+/* =========================================================
+   FIX: VIP GUEST PASS MODAL (Absolute Center & High Visibility)
+   ========================================================= */
+.vip-pass-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(3, 10, 7, 0.95) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999999 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.vip-pass-modal.is-active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.vip-pass-card {
+  position: relative !important;
+  margin: auto !important;
+  background: linear-gradient(135deg, #0d2e23 0%, #071e17 100%) !important;
+  border: 2px solid var(--gold, #c9a227) !important;
+  border-radius: 20px !important;
+  width: 90% !important;
+  max-width: 420px !important;
+  padding: 40px 30px !important;
+  text-align: center !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 50px rgba(201, 162, 39, 0.35) !important;
+  color: #f6f0dd !important;
+}
+
+/* =========================================================
+   FIX: FLIP CARD BACK TEXT COLOR (Black to Bright Ivory/Gold)
+   ========================================================= */
+.flip-card-back, 
+.flip-card-back * {
+  color: #f6f0dd !important;
+}
+
+.flip-card-back h3, 
+.flip-card-back p, 
+.flip-card-back span {
+  color: #f6f0dd !important;
+}
+
+.flip-card-back .gold-text,
+.flip-card-back highlight {
+  color: var(--gold-bright, #ffe9ad) !important;
+}
