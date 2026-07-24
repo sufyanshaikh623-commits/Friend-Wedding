@@ -314,4 +314,3 @@ button { font-family: inherit; cursor: pointer; background: none; border: none; 
   .events-grid { grid-template-columns: 1fr; }
   body, p, a { font-size: 17px !important; }
 }
-
