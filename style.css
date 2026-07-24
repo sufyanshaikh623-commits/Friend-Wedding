@@ -619,22 +619,21 @@ a:focus-visible, button:focus-visible{
 
 /* VIP Digital Guest Pass Modal */
 .vip-pass-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 10, 5, 0.88);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.vip-pass-modal.is-active {
-  opacity: 1;
-  pointer-events: auto;
+.vip-pass-modal.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .vip-pass-card {
