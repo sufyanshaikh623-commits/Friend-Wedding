@@ -406,5 +406,41 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBtn.innerText = "Download JPEG";
       });
     });
+    
   }
+});
+// --- VIP Modal Open/Close Fix ---
+document.addEventListener("DOMContentLoaded", function() {
+    const openBtn = document.getElementById("openVipModalBtn");
+    const closeBtn = document.getElementById("closeVipModalBtn");
+    const modal = document.getElementById("vipModal");
+    const guestNameInput = document.getElementById("guestName");
+    const passGuestName = document.getElementById("passGuestName");
+
+    if (openBtn && modal) {
+        openBtn.addEventListener("click", function() {
+            // Agar guest name bhara hai toh pass par wohi naam show ho jaye
+            if (guestNameInput && guestNameInput.value.trim() !== "") {
+                passGuestName.textContent = guestNameInput.value.trim();
+            } else {
+                passGuestName.textContent = "Honourable Guest";
+            }
+            modal.classList.add("active");
+        });
+    }
+
+    if (closeBtn && modal) {
+        closeBtn.addEventListener("click", function() {
+            modal.classList.remove("active");
+        });
+    }
+
+    // Modal ke background (dark overlay) par click karne se bhi band ho jaye
+    if (modal) {
+        modal.addEventListener("click", function(e) {
+            if (e.target === modal) {
+                modal.classList.remove("active");
+            }
+        });
+    }
 });
