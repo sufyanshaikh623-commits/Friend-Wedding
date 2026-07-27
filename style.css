@@ -1284,3 +1284,40 @@ a:focus-visible, button:focus-visible{
 .flip-card-back .gold-text, .flip-card-front .gold-text {
     color: #f0d78c !important;
 }
+
+/* --- Couple Grid & Mobile Alignment Fix --- */
+.couple-grid {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+}
+
+@media screen and (max-width: 768px) {
+    .couple-grid {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    .couple-and {
+        margin: 10px 0 !important;
+        display: block !important;
+        text-align: center !important;
+        font-size: 1.5rem !important;
+        color: #f0d78c !important;
+    }
+}
+
+/* --- Flip Card Back Text Force White & Gold --- */
+.flip-back, .flip-back * {
+    color: #ffffff !important;
+}
+
+.flip-back-mono {
+    color: #f0d78c !important;
+}
+
+.couple-bio {
+    color: #ffffff !important;
+}
