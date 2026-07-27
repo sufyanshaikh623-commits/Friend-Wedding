@@ -1328,7 +1328,56 @@ a:focus-visible, button:focus-visible{
 .flip-front .couple-role,
 div.flip-front h3.couple-name,
 div.flip-front p.couple-role {
-    color: black !important;
+    color: #050505 !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9) !important;
     -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* --- Move Text to Bottom Blank Area inside Flip Front & Fix '&' --- */
+.flip-front {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding-bottom: 25px !important;
+}
+
+.flip-front img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 75% !important; /* Tasveer ko upar rakha hai taake neeche jagah ban jaye */
+    object-fit: cover !important;
+}
+
+.flip-front .couple-name,
+.flip-front h3 {
+    position: relative !important;
+    z-index: 5 !important;
+    color: #f0d78c !important;
+    font-size: 1.8rem !important;
+    margin: 5px 0 0 0 !important;
+    text-shadow: none !important;
+}
+
+.flip-front .couple-role,
+.flip-front p {
+    position: relative !important;
+    z-index: 5 !important;
+    color: #ffffff !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 2px !important;
+    margin: 0 !important;
+    text-shadow: none !important;
+}
+
+/* Fix '&' Sign Color and Visibility */
+.couple-and {
+    color: #f0d78c !important;
+    font-size: 1.8rem !important;
+    font-family: serif !important;
+    margin: 15px 0 !important;
+    display: block !important;
+    text-align: center !important;
 }
