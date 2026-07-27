@@ -1458,67 +1458,39 @@ div.flip-front p.couple-role {
 
 
 }
-
-/* --- Unique Royal Wedding Theme (Midnight Slate & Champagne Gold) --- */
-
+/* --- Poori Website ke liye Global Unique Theme --- */
 :root {
-    --bg-main: #121619;         /* Deep luxury dark slate background */
-    --bg-card: #1A2126;         /* Slightly lighter slate for cards */
-    --accent-gold: #dfb774;     /* Soft champagne gold */
-    --text-main: #f5f5f5;       /* Off-white readable text */
+    --bg-main: #121619;         /* Poori website ka deep luxury dark slate background */
+    --bg-card: #1A2126;         /* Cards aur boxes ka background */
+    --accent-gold: #dfb774;     /* Champagne gold color text aur borders ke liye */
+    --text-main: #f5f5f5;       /* Saaf off-white text */
+    --text-muted: #b0b0b0;      /* Halka grey text */
 }
 
-/* Poori website ka main background */
+/* Body aur HTML background override karne ke liye */
 body, html {
-    background-color: var(--bg-main);
-    color: var(--text-main);
+    background-color: var(--bg-main) !important;
+    color: var(--text-main) !important;
 }
 
-/* Couple Section Background */
-.couple-section {
-    padding: 60px 20px;
-    background: radial-gradient(circle at center, #1e272c 0%, var(--bg-main) 70%);
+/* Saare sections ka background dark slate karne ke liye */
+section, header, footer, .main-container {
+    background-color: transparent;
 }
 
-/* Cards Styling */
-.couple-grid > div:not(:nth-child(2)) {
-    background: var(--bg-card);
-    border: 2px solid var(--accent-gold);
-    border-radius: 16px;
-    overflow: hidden;
-    width: 280px;
-    max-width: 100%;
-    box-shadow: 0 8px 25px rgba(223, 183, 116, 0.15);
-    text-align: center;
+/* Agar koi green background wali class pehle se hai toh usko override karne ke liye */
+.couple-section, .events-section, .countdown-section, .story-section, .footer-section {
+    background: radial-gradient(circle at center, #1e272c 0%, var(--bg-main) 70%) !important;
 }
 
-/* Card Content Area */
-.couple-grid .card-content {
-    padding: 20px 15px;
-    background: var(--bg-card);
+/* Har qisam ke cards aur boxes ka background aur border update karne ke liye */
+.card, .event-card, .couple-grid > div:not(:nth-child(2)), .modal-content, .countdown-box {
+    background-color: var(--bg-card) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--text-main) !important;
 }
 
-.couple-grid h3 {
-    color: var(--accent-gold);
-    font-family: serif;
-    font-size: 1.8rem;
-    margin: 0 0 5px 0;
-}
-
-.couple-grid p.title {
-    color: #b0b0b0;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 0;
-}
-
-/* Centered '&' Sign */
-.couple-grid .ampersand {
-    color: var(--accent-gold);
-    font-size: 2.5rem;
-    font-family: serif;
-    text-align: center;
-    width: 100%;
-    flex-basis: 100%;
+/* Headings aur accents ko gold rakhne ke liye */
+h1, h2, h3, h4, h5, h6, .section-title, .section-eyebrow {
+    color: var(--accent-gold) !important;
 }
