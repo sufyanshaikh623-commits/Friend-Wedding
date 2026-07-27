@@ -1381,3 +1381,78 @@ div.flip-front p.couple-role {
     display: block !important;
     text-align: center !important;
 }
+
+/* Couple Section Styling */
+.couple-section {
+    padding: 50px 20px;
+}
+
+.couple-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* Individual Card */
+.couple-grid > div:not(:nth-child(2)) {
+    background: #0b2219;
+    border: 2px solid #f0d78c;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 280px;
+    max-width: 100%;
+    box-shadow: 0 4px 20px rgba(240, 215, 140, 0.2);
+    text-align: center;
+}
+
+/* Card Image Wrapper */
+.couple-grid img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* Card Content (Names & Titles) */
+.couple-grid .card-content {
+    padding: 20px 15px;
+    background: #0b2219;
+}
+
+.couple-grid h3 {
+    color: #f0d78c;
+    font-family: serif;
+    font-size: 1.8rem;
+    margin: 0 0 5px 0;
+}
+
+.couple-grid p.title {
+    color: #ffffff;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Centered '&' Sign Styling */
+.couple-grid .ampersand {
+    color: #f0d78c;
+    font-size: 2.5rem;
+    font-family: serif;
+    text-align: center;
+    width: 100%;
+    flex-basis: 100%;
+}
+
+/* Responsive adjustments for smaller mobile screens */
+@media (max-width: 600px) {
+    .couple-grid {
+        gap: 15px;
+    }
+    .couple-grid > div:not(:nth-child(2)) {
+        width: 100%;
+        max-width: 320px;
+    }
+}
