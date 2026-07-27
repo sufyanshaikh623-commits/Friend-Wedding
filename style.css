@@ -1261,6 +1261,7 @@ a:focus-visible, button:focus-visible{
         width: 100% !important;
         position: relative !important;
         z-index: 10 !important;
+        color: black !important;
     }
 }
 
