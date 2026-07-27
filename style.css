@@ -1247,3 +1247,40 @@ a:focus-visible, button:focus-visible{
     margin-top: 4px !important;
     z-index: 2 !important;
 }
+
+/* --- Mobile Groom & Bride Name Center Alignment Fix --- */
+@media screen and (max-width: 768px) {
+    /* Groom aur Bride ke darmiyan naam ki positioning aur spacing */
+    .couple-names, .names-container, .bride-groom-names, h1.names, .hero-names {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        margin: 15px auto !important;
+        width: 100% !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+}
+
+/* --- Flip Card Text Color Fix (Removing Black Text) --- */
+.flip-card, .flip-card-inner, .flip-card-front, .flip-card-back, 
+[class*="flip-card"], [class*="card"] {
+    color: #ffffff !important;
+}
+
+.flip-card-back p, 
+.flip-card-front p, 
+.flip-card-back span, 
+.flip-card-front span,
+.flip-card-back h1, .flip-card-back h2, .flip-card-back h3,
+.flip-card-front h1, .flip-card-front h2, .flip-card-front h3 {
+    color: #ffffff !important;
+}
+
+/* Highlights aur specific text ko gold color dene ke liye */
+.flip-card-back strong, .flip-card-front strong,
+.flip-card-back .gold-text, .flip-card-front .gold-text {
+    color: #f0d78c !important;
+}
