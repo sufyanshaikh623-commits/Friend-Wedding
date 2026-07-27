@@ -1305,7 +1305,7 @@ a:focus-visible, button:focus-visible{
         display: block !important;
         text-align: center !important;
         font-size: 1.5rem !important;
-        color: #f0d78c !important;
+        color: black !important;
     }
 }
 
