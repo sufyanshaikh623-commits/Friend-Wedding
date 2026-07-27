@@ -1459,10 +1459,3 @@ div.flip-front p.couple-role {
 
 }
 
-/* --- Royal Burgundy & Rose Gold Wedding Theme --- */
-:root {
-    --bg-main: #2a080c;         /* Deep rich royal burgundy/maroon background */
-    --bg-card: #3b0e14;         /* Slightly lighter burgundy for cards */
-    --accent-gold: #e8c4a2;     /* Soft rose gold for text and borders */
-    --text-main: #f9f6f0;       /* Warm ivory white text */
-}
