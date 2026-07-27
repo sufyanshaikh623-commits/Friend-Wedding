@@ -1490,13 +1490,13 @@ h1, h2, h3, h4, h5, h6, .section-title, .section-eyebrow {
     color: var(--accent-gold) !important;
 }
 
-/* --- Soft Luxury Champagne & Warm Taupe Wedding Theme --- */
+/* --- Ultra-Luxury Deep Emerald & Gold Wedding Theme --- */
 :root {
-    --bg-main: #1C1A17;         /* Bohot hi rich aur soft warm charcoal/taupe background */
-    --bg-card: #272421;         /* Cards ke liye thoda lighter warm tone */
-    --accent-gold: #D4AF37;     /* Classic bright metallic gold */
-    --text-main: #F7F5F0;       /* Soft cream white text */
-    --text-muted: #C5C0B5;      /* Secondary soft text */
+    --bg-main: #061A13;         /* Deep rich emerald forest green background */
+    --bg-card: #0A261C;         /* Slightly lifted emerald tone for cards */
+    --accent-gold: #D4AF37;     /* Bright polished gold for borders and highlights */
+    --text-main: #F4F1EA;       /* Soft warm ivory text */
+    --text-muted: #B8C5BE;      /* Muted soft sage-green text */
 }
 
 /* Poori website ka background override karne ke liye */
@@ -1505,17 +1505,17 @@ body, html {
     color: var(--text-main) !important;
 }
 
-/* Sections ka smooth warm gradient */
+/* Sections ka smooth, glowing emerald gradient */
 .couple-section, .events-section, .countdown-section, .story-section, .footer-section {
-    background: radial-gradient(circle at center, #2C2824 0%, var(--bg-main) 70%) !important;
+    background: radial-gradient(circle at center, #0F382A 0%, var(--bg-main) 70%) !important;
 }
 
-/* Cards aur boxes ka background aur border */
+/* Cards aur boxes ka background, border aur glowing shadow */
 .card, .event-card, .couple-grid > div:not(:nth-child(2)), .modal-content, .countdown-box {
     background-color: var(--bg-card) !important;
-    border-color: var(--accent-gold) !important;
+    border: 2px solid var(--accent-gold) !important;
     color: var(--text-main) !important;
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.12) !important;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15) !important;
 }
 
 /* Headings aur titles ka color */
