@@ -1328,7 +1328,7 @@ a:focus-visible, button:focus-visible{
 .flip-front .couple-role,
 div.flip-front h3.couple-name,
 div.flip-front p.couple-role {
-    color: #f0d78c !important;
+    color: black !important;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9) !important;
     -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5) !important;
 }
