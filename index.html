@@ -12,6 +12,171 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- ================= INTERACTIVE OPENING GATEFOLD (PASTE AT THE TOP OF BODY) ================= -->
+<div id="invitation-gate" class="gate-wrapper">
+  <!-- Left Panel -->
+  <div class="gate-panel panel-left"></div>
+  
+  <!-- Right Panel -->
+  <div class="gate-panel panel-right"></div>
+  
+  <!-- Center Seal / Logo Content -->
+  <div class="gate-content" id="gateContent">
+    <div class="royal-seal">
+      <span class="seal-initials">S & F</span>
+    </div>
+    <h1 class="gate-title">The Wedding Invitation</h1>
+    <p class="gate-subtitle">Click to unfold our story</p>
+    <button class="open-btn" onclick="openTheInvitation()">Open Invitation</button>
+  </div>
+</div>
+
+<!-- Background Audio Element (Optional: Apni music file ka link src me dalein) -->
+<audio id="bgMusic" src="https://assets.mixkit.co/active_storage/sfx/123/123.wav" preload="auto"></audio>
+
+<style>
+  /* GATE WRAPPER STYLES */
+  .gate-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999; /* Sabse upar rahega */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    perspective: 1200px;
+  }
+
+  /* BOTH PANELS */
+  .gate-panel {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(circle, #1a2a6c, #0f172a); /* Royal Dark Blue Theme */
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1;
+  }
+  .panel-left {
+    left: 0;
+    border-right: 2px solid #f0d78c; /* Golden Border Line */
+    transform-origin: left center;
+  }
+  .panel-right {
+    right: 0;
+    border-left: 2px solid #f0d78c;
+    transform-origin: right center;
+  }
+
+  /* CENTER CONTENT & SEAL */
+  .gate-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    font-family: 'Georgia', serif;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .royal-seal {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #f0d78c, #c5a85c);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(240, 215, 140, 0.6), inset 0 0 10px rgba(0,0,0,0.2);
+    animation: sealPulse 2s infinite ease-in-out;
+  }
+  .seal-initials {
+    font-size: 2rem;
+    color: #1a2a6c;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .gate-title {
+    font-size: 2.5rem;
+    color: #f0d78c;
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  .gate-subtitle {
+    font-size: 1rem;
+    font-style: italic;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+  }
+
+  /* LUXURY BUTTON */
+  .open-btn {
+    padding: 12px 35px;
+    background: transparent;
+    border: 2px solid #f0d78c;
+    color: #f0d78c;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 10px rgba(240, 215, 140, 0.2);
+  }
+  .open-btn:hover {
+    background: #f0d78c;
+    color: #1a2a6c;
+    box-shadow: 0 0 25px rgba(240, 215, 140, 0.8);
+    transform: translateY(-2px);
+  }
+
+  /* ANIMATION EFFECTS FOR OPENING */
+  .gate-wrapper.open .panel-left {
+    transform: rotateY(-90deg); /* Left Panel folds out */
+  }
+  .gate-wrapper.open .panel-right {
+    transform: rotateY(90deg); /* Right Panel folds out */
+  }
+  .gate-wrapper.open #gateContent {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+
+  @keyframes sealPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(240, 215, 140, 0.5); }
+    50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(240, 215, 140, 0.8); }
+  }
+</style>
+
+<script>
+  function openTheInvitation() {
+    const gate = document.getElementById('invitation-gate');
+    const music = document.getElementById('bgMusic');
+    
+    // 1. Music Play Karein
+    if(music) {
+      music.play().catch(err => console.log("Audio autoplay restricted by browser: ", err));
+    }
+    
+    // 2. Class add karein jo animation chalaygi
+    gate.classList.add('open');
+    
+    // 3. Animation khatam hone par elements ko layout se hata dein taake background website click ho sake
+    setTimeout(() => {
+      gate.style.display = 'none';
+    }, 1800); // 1.8 seconds ka animation complete hone ke baad completely hide
+  }
+</script>
+<!-- ================= END OF GATEFOLD EFFECT ================= -->
+
 
 <!-- ================= FILM GRAIN ================= -->
 <svg class="grain-overlay" aria-hidden="true">
