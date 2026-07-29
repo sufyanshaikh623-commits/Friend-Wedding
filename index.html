@@ -12,250 +12,210 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= SHAHI JHOOMAR CINEMATIC ENTRY ================= -->
-<div id="shahi-cinematic-overlay" class="darbar-overlay">
+<!-- ================= THE LIQUID GOLD CINEMATIC ENTRY ================= -->
+<div id="liquid-luxury-overlay" class="fluid-overlay" onclick="triggerLiquidReveal()">
   
-  <!-- Glowing Royal Chandelier (Jhoomar) -->
-  <div class="chandelier-container">
-    <div class="chandelier-rope"></div>
-    <div class="chandelier-body">
-      <!-- Shahi Jhoomar Structure using SVG Icons for Ultra Premium Look -->
-      <svg width="80" height="100" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Main Top Ring -->
-        <ellipse cx="50" cy="20" rx="25" ry="6" stroke="#f0d78c" stroke-width="2"/>
-        <!-- Chandelier Body / Crystals -->
-        <path d="M25 20 L15 60 L50 110 L85 60 L75 20 Z" fill="url(#goldGrad)" opacity="0.15"/>
-        <path d="M25 20 L15 60 L50 110 L85 60 L75 20 Z" stroke="#c5a85c" stroke-width="2"/>
-        <!-- Inner Hanging Lights -->
-        <line x1="50" y1="20" x2="50" y2="105" stroke="#f0d78c" stroke-width="1.5"/>
-        <line x1="35" y1="20" x2="30" y2="58" stroke="#f0d78c" stroke-width="1.5"/>
-        <line x1="65" y1="20" x2="70" y2="58" stroke="#f0d78c" stroke-width="1.5"/>
-        <!-- Crystal Drops -->
-        <circle cx="50" cy="110" r="4" fill="#fff" filter="drop-shadow(0 0 5px #f0d78c)"/>
-        <circle cx="15" cy="60" r="3" fill="#f0d78c"/>
-        <circle cx="85" cy="60" r="3" fill="#f0d78c"/>
-        <circle cx="30" cy="58" r="3" fill="#f0d78c"/>
-        <circle cx="70" cy="58" r="3" fill="#f0d78c"/>
-        <!-- Gradients for Luxury Look -->
-        <defs>
-          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#f0d78c"/>
-            <stop offset="100%" stop-color="#9a7b36"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-    <div class="chandelier-glow"></div>
+  <!-- Interactive Golden Droplet (Starting Point) -->
+  <div class="fluid-orb-wrapper" id="orbWrapper">
+    <div class="fluid-orb"></div>
+    <p class="fluid-hint">TOUCH THE GOLDEN DROPLET</p>
   </div>
 
-  <!-- The 3D Mahal Stage -->
-  <div class="mahal-stage" id="mahalStage">
-    <!-- Outer Royal Archway Frame -->
-    <div class="mughal-archway">
-      <div class="archway-inner-border"></div>
-    </div>
-
-    <!-- Center Calligraphy Text Group -->
-    <div class="darbar-content">
-      <p class="royal-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-      <h1 class="royal-names">Sufyan <span class="gold-and">&</span> Fareeya</h1>
-      <p class="royal-tag">THE WEDDING INVITATION</p>
-      <button class="royal-enter-btn" onclick="startCinematicZoom()">BE OUR GUEST</button>
-    </div>
+  <!-- The Golden Ink Blast Layer -->
+  <div class="gold-splash-canvas" id="splashCanvas">
+    <div class="splash-wave wave-1"></div>
+    <div class="splash-wave wave-2"></div>
   </div>
 
-  <!-- Floating Gold Luxury Dust Particles -->
-  <div class="gold-dust-layer"></div>
+  <!-- Floating Cinematic Typography -->
+  <div class="fluid-content" id="fluidContent">
+    <div class="royal-monogram">S <span>&</span> F</div>
+    <h1 class="fluid-names">Sufyan & Fareeya</h1>
+    <div class="fluid-line"></div>
+    <p class="fluid-date">16 . 11 . 2026</p>
+  </div>
 </div>
 
 <style>
-  /* DEEP ROYAL MATTE BACKGROUND */
-  .darbar-overlay {
+  /* SCREEN ARCHITECTURE */
+  .fluid-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #07070a; 
+    background: #0b0b0d; /* Premium luxury dark environment */
     z-index: 9999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    perspective: 2000px; 
-  }
-
-  /* HANGING CRYSTAL CHANDELIER (JHOOMAR) ANIMATION */
-  .chandelier-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 5;
-    transform-origin: top center;
-    animation: chandelierSway 5s infinite ease-in-out;
-  }
-  .chandelier-rope {
-    width: 2px;
-    height: 70px;
-    background: linear-gradient(to bottom, #c5a85c, #f0d78c);
-  }
-  .chandelier-glow {
-    position: absolute;
-    bottom: -30px;
-    width: 120px;
-    height: 60px;
-    background: radial-gradient(circle, rgba(240, 215, 140, 0.4) 0%, transparent 70%);
-    filter: blur(8px);
-    pointer-events: none;
-  }
-
-  /* 3D MAHAL CONTAINER */
-  .mahal-stage {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 550px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-style: preserve-3d;
-    transition: transform 2.2s cubic-bezier(0.7, 0, 0.3, 1), opacity 1.8s ease;
-  }
-
-  /* ROYAL MUGHAL MEHRAAB (ARCHWAY FRAME) */
-  .mughal-archway {
-    position: absolute;
-    width: 420px;
-    height: 520px;
-    border: 3px solid #c5a85c;
-    border-radius: 200px 200px 20px 20px; 
-    box-shadow: 0 0 40px rgba(197, 168, 92, 0.15), inset 0 0 30px rgba(197, 168, 92, 0.1);
-    transform: translateZ(-100px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;
-  }
-  .archway-inner-border {
-    width: 95%;
-    height: 96%;
-    border: 1px dashed rgba(240, 215, 140, 0.4);
-    border-radius: 190px 190px 15px 15px;
-  }
-
-  /* TEXT GROUP */
-  .darbar-content {
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Georgia', serif;
-    z-index: 3;
-    transform: translateZ(50px); 
-  }
-
-  .royal-bismillah {
-    font-size: 1.3rem;
-    color: #f0d78c;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(240, 215, 140, 0.5);
-  }
-
-  .royal-names {
-    font-size: 3.2rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin: 10px 0;
-    line-height: 1.2;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2), 0 4px 10px rgba(0,0,0,0.7);
-  }
-  .gold-and {
-    color: #f0d78c;
-    font-style: italic;
-    font-size: 2.2rem;
-    display: block;
-    margin: 5px 0;
-  }
-
-  .royal-tag {
-    font-size: 0.8rem;
-    letter-spacing: 5px;
-    color: #a1a1aa;
-    margin-bottom: 40px;
-  }
-
-  /* SHAHI LUXURY BUTTON */
-  .royal-enter-btn {
-    padding: 14px 40px;
-    background: linear-gradient(135deg, #c5a85c 0%, #9a7b36 100%);
-    border: none;
-    color: #07070a;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(197, 168, 92, 0.4);
-    transition: all 0.4s ease;
-  }
-  .royal-enter-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(240, 215, 140, 0.7);
-    background: linear-gradient(135deg, #f0d78c 0%, #c5a85c 100%);
   }
 
-  /* CINEMATIC ZOOM ANIMATION TRIGGER */
-  .darbar-overlay.zoom-active .mahal-stage {
-    transform: translateZ(1500px) scale(4); 
-    opacity: 0;
+  /* STARTING ORB (SONE KI BOOND) */
+  .fluid-orb-wrapper {
+    text-align: center;
+    z-index: 10;
+    transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   }
-  
-  .darbar-overlay.zoom-active {
-    opacity: 0;
-    transition: opacity 1.5s ease 0.8s; 
-    pointer-events: none;
+  .fluid-orb {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #ffeaa7 0%, #f0d78c 50%, #c5a85c 100%);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 30px rgba(240, 215, 140, 0.8), inset 0 -5px 15px rgba(0,0,0,0.2);
+    animation: liquidFloat 3s infinite ease-in-out;
+  }
+  .fluid-hint {
+    color: #f0d78c;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    opacity: 0.7;
+    animation: pulseGlow 1.5s infinite;
   }
 
-  /* JHOOMAR SWAYING EFFECT */
-  @keyframes chandelierSway {
-    0%, 100% { transform: translateX(-50%) rotate(2deg); }
-    50% { transform: translateX(-50%) rotate(-2deg); }
-  }
-
-  /* FLOATING PARTICLES */
-  .gold-dust-layer {
+  /* LIQUID EXPLOSION WAVES */
+  .gold-splash-canvas {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(240, 215, 140, 0.15) 1px, transparent 0);
-    background-size: 40px 40px;
-    opacity: 0.5;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .splash-wave {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 215, 140, 0.9) 0%, rgba(197, 168, 92, 0.4) 60%, transparent 100%);
+    transform: scale(0);
+    opacity: 0;
+    filter: blur(8px);
+  }
+
+  /* TYPOGRAPHY REVEAL */
+  .fluid-content {
+    position: absolute;
+    text-align: center;
+    z-index: 6;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-family: 'Georgia', serif;
+    pointer-events: none;
+  }
+  
+  .royal-monogram {
+    font-size: 2.5rem;
+    color: #f0d78c;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(240,215,140,0.4);
+  }
+  .royal-monogram span {
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #fff;
+  }
+
+  .fluid-names {
+    font-size: 3.5rem;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  }
+
+  .fluid-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #f0d78c, transparent);
+    margin: 20px auto;
+  }
+
+  .fluid-date {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    letter-spacing: 4px;
+  }
+
+  /* ANIMATION TRIGGERS */
+  .fluid-overlay.active .fluid-orb-wrapper {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .fluid-overlay.active .wave-1 {
+    animation: waveBlast 1.4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  }
+  .fluid-overlay.active .wave-2 {
+    animation: waveBlast 1.8s cubic-bezier(0.1, 0.6, 0.2, 1) 0.2s forwards;
+  }
+
+  .fluid-overlay.active .fluid-content {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.6s;
+  }
+
+  /* SMOOTH REMOVAL FROM SCREEN */
+  .fluid-overlay.fade-out-complete {
+    opacity: 0;
+    transition: opacity 1.2s ease;
     pointer-events: none;
   }
 
+  /* KEYFRAMES */
+  @keyframes liquidFloat {
+    0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+    50% { transform: translateY(-10px) scale(1.05); filter: brightness(1.2); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  @keyframes waveBlast {
+    0% { transform: scale(0); opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { transform: scale(30); opacity: 0; filter: blur(30px); }
+  }
+
+  /* MOBILE RESPONSIVE */
   @media (max-width: 480px) {
-    .mughal-archway { width: 300px; height: 420px; }
-    .royal-names { font-size: 2.2rem; }
-    .gold-and { font-size: 1.6rem; }
+    .fluid-names { font-size: 2.2rem; }
+    .royal-monogram { font-size: 1.8rem; }
   }
 </style>
 
 <script>
-  function startCinematicZoom() {
-    var overlay = document.getElementById('shahi-cinematic-overlay');
-    if (overlay) {
-      overlay.classList.add('zoom-active');
+  function triggerLiquidReveal() {
+    var overlay = document.getElementById('liquid-luxury-overlay');
+    
+    if(overlay.classList.contains('active')) return;
+
+    // 1. Blast aur fluid texture chalao
+    overlay.classList.add('active');
+    
+    // 2. Pure setup ko fade karke real website par land karo
+    setTimeout(function() {
+      overlay.classList.add('fade-out-complete');
       setTimeout(function() {
         overlay.style.display = 'none';
-      }, 2200); 
-    }
+      }, 1200);
+    }, 4500);
   }
 </script>
-<!-- ================= END OF CINEMATIC REVEAL ================= -->
+<!-- ================= END OF LIQUID REVEAL ================= -->
 
   
 <!-- ================= FILM GRAIN ================= -->
