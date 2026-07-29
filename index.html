@@ -12,295 +12,233 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= THE ROYAL WAX SEAL & ENVELOPE (PASTE AT TOP OF BODY) ================= -->
-<div id="royal-envelope-wrapper" class="envelope-overlay">
-  <div class="envelope-container" id="envelopeContainer">
+<!-- ================= AUTOMATIC ROYAL ENVELOPE (PURE CSS - NO CLICK REQUIRED) ================= -->
+<div class="royal-overlay">
+  <!-- Envelope Box: Mouse lane par ya Mobile par tap karne par automatic khulega -->
+  <div class="envelope-box">
     
-    <!-- Top Flap of the Envelope -->
-    <div class="envelope-flap flap-top"></div>
+    <!-- Gold Wax Seal (Mohar) -->
+    <div class="envelope-seal">
+      <div class="seal-txt">S & F<br><small>👑</small></div>
+    </div>
     
-    <!-- Left & Right Decorative Flaps -->
-    <div class="envelope-flap flap-left"></div>
-    <div class="envelope-flap flap-right"></div>
+    <!-- Flaps -->
+    <div class="flap top-flap"></div>
+    <div class="flap left-flap"></div>
+    <div class="flap right-flap"></div>
+    <div class="flap bottom-flap"></div>
     
-    <!-- Bottom Flap -->
-    <div class="envelope-flap flap-bottom"></div>
-
-    <!-- The Royal Wax Seal (Click Target) -->
-    <div class="wax-seal" id="waxSeal" onclick="unfoldRoyalEnvelope()">
-      <div class="seal-inner">
-        <div class="seal-names">S & F</div>
-        <div class="seal-text">PRESS TO UNSEAL</div>
+    <!-- Dynamic Inside Card -->
+    <div class="envelope-card">
+      <div class="card-inner-frame">
+        <p class="card-bismillah">Bismillah-ir-Rahman-ir-Rahim</p>
+        <h1 class="card-names-title">Sufyan & Fareeya</h1>
+        <p class="card-invite-txt">Are inviting you to celebrate their wedding</p>
+        <div class="card-crown">👑</div>
+        <p class="card-hint">Tap / Scroll Down To Enter</p>
       </div>
     </div>
     
-    <!-- Invitation Card Inside the Envelope -->
-    <div class="royal-card" id="royalCard">
-      <div class="card-border">
-        <p class="card-welcome">Bismillah-ir-Rahman-ir-Rahim</p>
-        <h1 class="card-couple">Sufyan & Fareeya</h1>
-        <p class="card-tagline">Are inviting you to celebrate their love</p>
-        <div class="gold-divider">♦ 👑 ♦</div>
-        <p class="card-instruction">Scroll down to view details</p>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<!-- Soft Royal Instrument Music Trigger -->
-<audio id="royalMusic" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav" preload="auto"></audio>
-
 <style>
-  /* OVERLAY BACKGROUND */
-  .envelope-overlay {
+  /* FULL SCREEN SHAHI BACKGROUND */
+  .royal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle, #1a0f00 0%, #0a0500 100%); /* Premium dark background */
-    z-index: 9999999 !important;
+    background: radial-gradient(circle, #1f1105 0%, #080401 100%);
+    z-index: 99999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    perspective: 1500px;
   }
 
-  /* ENVELOPE CONTAINER */
-  .envelope-container {
+  /* THE ENVELOPE CONTROLLER */
+  .envelope-box {
     position: relative;
-    width: 450px;
-    height: 320px;
-    background: #2b1810; /* Textured dark paper look */
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
-    border: 2px solid #c5a85c;
-    border-radius: 4px;
-    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
+    width: 420px;
+    height: 280px;
+    background: #361b10;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.9);
+    border: 1px solid #c5a85c;
+    cursor: pointer;
   }
 
-  /* ENVELOPE FLAPS */
-  .envelope-flap {
+  /* FLAPS SETUP */
+  .flap {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 2;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
+    z-index: 3;
+    transition: transform 0.8s ease-in-out, z-index 0.6s ease;
   }
-  
-  .flap-top {
-    background: linear-gradient(135deg, transparent 50%, #3a2217 50%), 
-                linear-gradient(225deg, transparent 50%, #3a2217 50%);
+
+  .top-flap {
+    background: linear-gradient(135deg, transparent 50%, #442417 50%), 
+                linear-gradient(225deg, transparent 50%, #442417 50%);
     background-size: 50% 100%;
     background-repeat: no-repeat;
     background-position: left top, right top;
     height: 50%;
     transform-origin: top center;
-    border-bottom: 1px solid rgba(197, 168, 92, 0.3);
+    border-bottom: 1px solid rgba(197, 168, 92, 0.2);
   }
 
-  .flap-bottom {
-    background: linear-gradient(45deg, #23130c 50%, transparent 50%), 
-                linear-gradient(315deg, #23130c 50%, transparent 50%);
+  .bottom-flap {
+    background: linear-gradient(45deg, #2a140b 50%, transparent 50%), 
+                linear-gradient(315deg, #2a140b 50%, transparent 50%);
     background-size: 50% 100%;
     background-repeat: no-repeat;
     background-position: left bottom, right bottom;
     top: 50%;
     height: 50%;
+    z-index: 4;
   }
 
-  /* ROYAL WAX SEAL */
-  .wax-seal {
+  .left-flap {
+    background: linear-gradient(135deg, #3a1e13 50%, transparent 50%),
+                linear-gradient(45deg, #3a1e13 50%, transparent 50%);
+    background-size: 50% 50%, 50% 50%;
+    background-repeat: no-repeat;
+    background-position: left top, left bottom;
+    z-index: 4;
+  }
+
+  .right-flap {
+    background: linear-gradient(225deg, #32190f 50%, transparent 50%),
+                linear-gradient(315deg, #32190f 50%, transparent 50%);
+    background-size: 50% 50%, 50% 50%;
+    background-repeat: no-repeat;
+    background-position: right top, right bottom;
+    z-index: 4;
+  }
+
+  /* WAX SEAL (MOHAR) */
+  .envelope-seal {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 110px;
-    height: 110px;
-    background: radial-gradient(circle, #8b0000 0%, #4a0000 100%); /* Deep Royal Maroon Wax */
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, #8b0000 0%, #4a0000 100%);
+    border: 2px dashed #c5a85c;
     border-radius: 50%;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
     z-index: 10;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 0 10px rgba(255,255,255,0.2);
-    border: 3px dashed #c5a85c;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .wax-seal:hover {
-    transform: translate(-50%, -50%) scale(1.08);
-    box-shadow: 0 15px 30px rgba(197, 168, 92, 0.4);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: all 0.5s ease;
   }
 
-  .seal-inner {
-    text-align: center;
+  .seal-txt {
     color: #f0d78c;
-    font-family: 'Times New Roman', serif;
-  }
-  
-  .seal-names {
-    font-size: 1.4rem;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
     font-weight: bold;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    text-align: center;
+    line-height: 1.2;
   }
 
-  .seal-text {
-    font-size: 0.55rem;
-    letter-spacing: 1px;
-    margin-top: 4px;
-    opacity: 0.8;
-  }
-
-  /* THE ACTUAL WEDDING CARD INSIDE */
-  .royal-card {
+  /* THE WEDDING CARD INSIDE */
+  .envelope-card {
     position: absolute;
     width: 92%;
-    height: 90%;
-    top: 5%;
+    height: 92%;
+    top: 4%;
     left: 4%;
-    background: #fdfbf7; /* Off-white luxury paper style */
-    z-index: 1;
-    border-radius: 2px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
-    opacity: 0;
-    transform: translateY(0) scale(0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #2b1810;
-    font-family: 'Georgia', serif;
+    background: #fbf9f4;
+    z-index: 2;
+    padding: 15px;
+    box-sizing: border-box;
+    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
+    opacity: 0.5;
+    transform: translateY(0) scale(0.95);
   }
 
-  .card-border {
-    width: 90%;
-    height: 88%;
+  .card-inner-frame {
+    width: 100%;
+    height: 100%;
     border: 2px solid #c5a85c;
-    padding: 20px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    color: #2b170c;
   }
 
-  .card-welcome {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #8b6f38;
-    margin: 0 0 10px 0;
+  .card-bismillah { font-size: 0.85rem; font-style: italic; color: #8a6d3b; margin: 0; }
+  .card-names-title { font-size: 1.8rem; margin: 8px 0; font-weight: 400; color: #1a0a02; }
+  .card-invite-txt { font-size: 0.8rem; color: #555; margin: 0 10px; }
+  .card-crown { color: #c5a85c; font-size: 1.2rem; margin: 5px 0; }
+  .card-hint { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #8a6d3b; margin: 5px 0 0 0; }
+
+  /* ================= MAGIC TRIGGER MECHANISM ================= */
+  /* Jaise hi user is box par mouse laye ya touch kare, sab automatic chalega */
+  .envelope-box:hover .top-flap, 
+  .envelope-box:active .top-flap,
+  .envelope-box:focus .top-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
   }
 
-  .card-couple {
-    font-size: 2.2rem;
-    margin: 5px 0;
-    color: #1a0f00;
-    font-weight: 400;
-    letter-spacing: 1px;
-  }
-
-  .card-tagline {
-    font-size: 0.85rem;
-    color: #555;
-    margin: 5px 0 15px 0;
-  }
-
-  .gold-divider {
-    color: #c5a85c;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-
-  .card-instruction {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #8b6f38;
-    animation: pulseText 1.5s infinite;
-  }
-
-  /* ANIMATION TRIGGER STATES */
-  .envelope-container.unsealed .flap-top {
-    transform: rotateX(180deg) translateY(-1px);
-    z-index: 0; /* Goes behind so card can slide up */
-  }
-
-  .envelope-container.unsealed .wax-seal {
+  .envelope-box:hover .envelope-seal,
+  .envelope-box:active .envelope-seal,
+  .envelope-box:focus .envelope-seal {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
-    pointer-events: none;
   }
 
-  .envelope-container.unsealed .royal-card {
+  .envelope-box:hover .envelope-card,
+  .envelope-box:active .envelope-card,
+  .envelope-box:focus .envelope-card {
     opacity: 1;
-    transform: translateY(-120px) scale(1.15); /* Card slides out upwards majestically */
+    transform: translateY(-130px) scale(1.18);
     z-index: 20;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
   }
 
-  /* Fade out whole screen slowly after presentation */
-  .envelope-overlay.fade-away {
+  /* Puri Screen ko automatic gayab karne ka trigger taake main website dikhe */
+  .royal-overlay {
+    transition: opacity 0.8s ease 4s; /* Jab user touch karega toh 4 seconds baad screen fade out ho jayegi */
+  }
+  .envelope-box:hover ~ .royal-overlay,
+  .envelope-box:active ~ .royal-overlay {
     opacity: 0;
-    transition: opacity 1s ease;
     pointer-events: none;
   }
-
-  @keyframes pulseText {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+  
+  /* Agar pura overlay gayab karna ho scroll ke liye */
+  .royal-overlay:active, .royal-overlay:focus-within {
+    animation: fadeOutScreen 1s ease 4s forwards;
   }
 
-  /* RESPONSIVE FOR MOBILE */
-  @media (max-width: 500px) {
-    .envelope-container {
-      width: 90%;
-      height: 260px;
-    }
-    .card-couple {
-      font-size: 1.6rem;
-    }
-    .envelope-container.unsealed .royal-card {
+  @keyframes fadeOutScreen {
+    to { opacity: 0; pointer-events: none; visibility: hidden; }
+  }
+
+  /* MOBILE RESPONSIVE STYLE */
+  @media (max-width: 480px) {
+    .envelope-box { width: 90%; height: 240px; }
+    .card-names-title { font-size: 1.4rem; }
+    .envelope-box:hover .envelope-card,
+    .envelope-box:active .envelope-card {
       transform: translateY(-90px) scale(1.08);
     }
   }
 </style>
 
-<script>
-  function unfoldRoyalEnvelope() {
-    var container = document.getElementById('envelopeContainer');
-    var overlay = document.getElementById('royal-envelope-wrapper');
-    var music = document.getElementById('royalMusic');
-    
-    // Music play ho
-    if (music) {
-      music.play().catch(function(e) { console.log("Audio handeled"); });
-    }
-    
-    // Unseal aur unfold animation lagayein
-    if (container) {
-      container.classList.add('unsealed');
-    }
-    
-    // Jab card baahar aa jaye full look me, toh 4.5 seconds baad screen smooth fade ho kar real website par chali jaye
-    setTimeout(function() {
-      if (overlay) {
-        overlay.classList.add('fade-away');
-      }
-      setTimeout(function() {
-        if (overlay) overlay.style.display = 'none';
-      }, 1000); // overlay hatane ke liye
-    }, 4500);
-  }
-</script>
-<!-- ================= END OF ROYAL EFFECT ================= -->
+
 <!-- ================= FILM GRAIN ================= -->
 <svg class="grain-overlay" aria-hidden="true">
   <filter id="grainFilter">
