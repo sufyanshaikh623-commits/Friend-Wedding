@@ -444,3 +444,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// ROYAL PRELOADER EXCLUSIVITY
+document.addEventListener("DOMContentLoaded", function() {
+    // 3.5 Seconds tak animation chalne ke baad fade-out trigger hoga
+    setTimeout(function() {
+        const preloader = document.getElementById("royal-preloader");
+        if(preloader) {
+            preloader.classList.add("fade-out");
+            
+            // Gates poore khulne ke baad element ko dom se hide kar denge
+            setTimeout(function() {
+                preloader.style.display = "none";
+            }, 1200); // match css gate transition length
+        }
+    }, 3500); 
+});
