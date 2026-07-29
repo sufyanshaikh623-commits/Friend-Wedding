@@ -12,326 +12,250 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= THE ULTIMATE 3D CINEMATIC VELVET BOX ================= -->
-<div id="ultimate-box-overlay" class="royal-overlay">
+<!-- ================= THE HOLOGRAM MONOGRAM FRACTURE ENTRY ================= -->
+<div id="hologram-luxury-overlay" class="holo-overlay">
   
-  <div class="scene-3d">
-    <div class="ultimate-box" id="mainBox">
-      
-      <!-- 3D LID (DHAKKAN) - FLIPS UPWARD IN 3D SPACE -->
-      <div class="box-lid-3d" onclick="unveilRoyalBox()">
-        <div class="lid-outer-surface">
-          <div class="gold-filigree-border">
-            <div class="royal-emblem">S <span>&</span> F</div>
-            <p class="tap-to-unveil">TAP TO UNVEIL</p>
-            <div class="pulse-ring"></div>
-          </div>
-        </div>
-      </div>
+  <!-- Interactive Floating Glass Monogram -->
+  <div class="glass-monogram-container" id="monogramCore" onclick="triggerHoloFracture()">
+    <div class="glass-plate">
+      <div class="holo-letters">S<span>&</span>F</div>
+      <div class="shimmer-line"></div>
+    </div>
+    <p class="holo-hint-text">TAP TO REVEAL</p>
+  </div>
 
-      <!-- BOX INTERIOR & LUXURY FLOATING CARD -->
-      <div class="box-base-3d">
-        <div class="internal-glow" id="boxGlow"></div>
-        <div class="satin-lining">
-          <div class="premium-glass-card">
-            <div class="card-border-line">
-              <p class="bismillah-text">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-              <div class="crown-icon">👑</div>
-              <h1 class="couple-names-ultimate">Sufyan & Fareeya</h1>
-              <div class="diamond-divider">♦ ⚜ ♦</div>
-              <p class="invitation-text">Together with their families, request the honor of your presence at their wedding celebration.</p>
-              <button class="enter-site-btn" onclick="shutdownOverlay()">ENTER EXPERIENCE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <!-- Hidden Premium Content Layer -->
+  <div class="holo-content-stage" id="holoContent">
+    <div class="cinematic-wrap">
+      <p class="arabic-blessing">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <h1 class="couple-title">Sufyan & Fareeya</h1>
+      <div class="luxury-divider-bar"></div>
+      <p class="wedding-timeline">NOVEMBER 16, 2026</p>
     </div>
   </div>
 
+  <!-- Shockwave Particle Background Rings -->
+  <div class="shockwave-ring ring-a"></div>
+  <div class="shockwave-ring ring-b"></div>
 </div>
 
 <style>
-  /* PREMIUM AMBIANCE */
-  .royal-overlay {
+  /* METALLIC DARK VOID ENVIRONMENT */
+  .holo-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #030204;
+    background: radial-gradient(circle at 50% 50%, #0d0e12 0%, #040405 100%);
     z-index: 9999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    perspective: 1200px;
   }
 
-  /* 3D PERSPECTIVE SETUP */
-  .scene-3d {
-    perspective: 1800px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .ultimate-box {
+  /* INTERACTIVE FLOATING GLASS MONOGRAM */
+  .glass-monogram-container {
     position: relative;
-    width: 400px;
-    height: 520px;
-    transform-style: preserve-3d;
-    transition: transform 2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  /* 3D LID FLIP ANIMATION */
-  .box-lid-3d {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10;
     cursor: pointer;
-    transform-origin: top center;
+    text-align: center;
+    z-index: 10;
     transform-style: preserve-3d;
-    transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .glass-monogram-container:hover {
+    transform: scale(1.05) rotateY(10deg);
   }
 
-  .lid-outer-surface {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 30%, #3a080d 0%, #120103 100%); /* Premium Midnight Maroon Velvet */
-    border: 5px solid #d4af37;
-    border-radius: 12px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.95), inset 0 0 40px rgba(0,0,0,0.8);
-    padding: 16px;
-    box-sizing: border-box;
-    backface-visibility: hidden;
-  }
-
-  .gold-filigree-border {
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    border-radius: 8px;
+  .glass-plate {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(240, 215, 140, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), 
+                inset 0 0 20px rgba(240, 215, 140, 0.1);
+    overflow: hidden;
+    animation: floatingPlate 4s infinite ease-in-out;
   }
 
-  .royal-emblem {
+  .holo-letters {
     font-family: 'Georgia', serif;
-    font-size: 3.5rem;
-    color: #f3e5ab;
+    font-size: 3.2rem;
     font-weight: bold;
+    color: #f0d78c;
     letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 2px 4px 10px rgba(0,0,0,0.9);
+    text-shadow: 0 0 20px rgba(240, 215, 140, 0.4);
   }
-  .royal-emblem span {
-    font-size: 2.2rem;
-    color: #fff;
-    font-style: italic;
-  }
-
-  .tap-to-unveil {
-    margin-top: 40px;
-    font-family: 'Arial', sans-serif;
+  .holo-letters span {
+    font-size: 2rem;
     color: #ffffff;
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    opacity: 0.8;
+    font-style: italic;
+    margin: 0 4px;
   }
 
-  /* INTERIOR BASE & LIGHT GLOW */
-  .box-base-3d {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #0f0204;
-    border-radius: 12px;
-    border: 3px solid #8a6d29;
-    z-index: 1;
-    padding: 12px;
-    box-sizing: border-box;
-    box-shadow: inset 0 0 50px #000;
-  }
-
-  .internal-glow {
+  /* MICRO SHIMMER REFLECTION LIGHT */
+  .shimmer-line {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -150%;
+    width: 50%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+    transform: skewX(-30deg);
+    animation: glassShimmer 6s infinite ease-in-out;
+  }
+
+  .holo-hint-text {
+    margin-top: 25px;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.7rem;
+    color: #ffffff;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    animation: microPulse 2s infinite ease-in-out;
+  }
+
+  /* TYPOGRAPHY CINEMATIC STAGE */
+  .holo-content-stage {
+    position: absolute;
+    width: 100%;
+    max-width: 550px;
+    text-align: center;
+    z-index: 5;
     opacity: 0;
-    transition: opacity 1.2s ease 0.4s;
+    transform: scale(0.95) translateZ(-50px);
+    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    font-family: 'Georgia', serif;
+    pointer-events: none;
+  }
+
+  .arabic-blessing {
+    font-size: 1.4rem;
+    color: #f0d78c;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+
+  .couple-title {
+    font-size: 3.4rem;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  }
+
+  .luxury-divider-bar {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #f0d78c, transparent);
+    margin: 25px auto;
+  }
+
+  .wedding-timeline {
+    font-size: 1.1rem;
+    color: #a1a1aa;
+    letter-spacing: 4px;
+  }
+
+  /* SHOCKWAVE TRIGGERS ON FRACTURE */
+  .shockwave-ring {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid rgba(240, 215, 140, 0.5);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
     pointer-events: none;
     z-index: 2;
   }
 
-  .satin-lining {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #170406 0%, #080001 100%);
-    border-radius: 8px;
-    padding: 12px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* MATTE LUXURY CARD SHEET */
-  .premium-glass-card {
-    width: 100%;
-    height: 100%;
-    background: #fdfcf7; /* Ivory Matte Fine Paper Texture */
-    border-radius: 6px;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    z-index: 3;
-  }
-
-  .card-border-line {
-    width: 100%;
-    height: 100%;
-    border: 2px solid #c5a85c;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-family: 'Georgia', serif;
-    color: #1a0a0d;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-
-  .bismillah-text {
-    font-size: 1.3rem;
-    color: #c5a85c;
-    margin: 0 0 10px 0;
-    font-weight: bold;
-  }
-
-  .crown-icon {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-  }
-
-  .couple-names-ultimate {
-    font-size: 2.4rem;
-    font-weight: 500;
-    margin: 10px 0;
-    letter-spacing: 1px;
-    color: #110204;
-  }
-
-  .diamond-divider {
-    color: #c5a85c;
-    font-size: 1rem;
-    margin: 10px 0;
-  }
-
-  .invitation-text {
-    font-size: 0.85rem;
-    color: #4a4a4a;
-    line-height: 1.6;
-    margin: 10px 15px;
-    max-width: 320px;
-  }
-
-  /* ROYAL BUTTON */
-  .enter-site-btn {
-    margin-top: 20px;
-    padding: 10px 24px;
-    background: linear-gradient(135deg, #c5a85c 0%, #9a7b36 100%);
-    border: none;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(197, 168, 92, 0.3);
-    transition: all 0.3s ease;
-  }
-  .enter-site-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
-  }
-
-  /* ANIMATION STATES */
-  .ultimate-box.unfolded .box-lid-3d {
-    transform: rotateX(115deg); /* Flips backwards seamlessly */
-  }
-
-  .ultimate-box.unfolded {
-    transform: rotateX(10deg) scale(1.05); /* Slight tilt towards the user */
-  }
-
-  .royal-overlay.exit-active {
+  /* ACTIVE TRIGGER STYLES */
+  .holo-overlay.fractured .glass-monogram-container {
+    transform: scale(1.6);
     opacity: 0;
-    transition: opacity 0.8s ease;
+    filter: blur(25px);
+    pointer-events: none;
+    transition: all 0.7s ease-out;
+  }
+
+  .holo-overlay.fractured .ring-a {
+    animation: blastWave 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  }
+  .holo-overlay.fractured .ring-b {
+    animation: blastWave 1.5s cubic-bezier(0.1, 0.6, 0.2, 1) 0.1s forwards;
+  }
+
+  .holo-overlay.fractured .holo-content-stage {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+    transition-delay: 0.5s;
+  }
+
+  /* SYSTEM SHUTDOWN DISSOLVE */
+  .holo-overlay.system-dissolved {
+    opacity: 0;
+    transition: opacity 1s ease;
     pointer-events: none;
   }
 
-  /* PULSE EFFECTS */
-  .pulse-ring {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    border-radius: 50%;
-    animation: corePulse 2s infinite ease-in-out;
-    pointer-events: none;
+  /* EFFECT KEYFRAMES */
+  @keyframes floatingPlate {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-8px) rotateX(4deg); }
+  }
+  @keyframes glassShimmer {
+    0% { left: -150%; }
+    30%, 100% { left: 150%; }
+  }
+  @keyframes microPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes blastWave {
+    0% { transform: scale(0); opacity: 1; border-width: 4px; }
+    40% { opacity: 0.6; }
+    100% { transform: scale(80); opacity: 0; filter: blur(15px); border-width: 1px; }
   }
 
-  @keyframes corePulse {
-    0% { transform: scale(0.8); opacity: 0.8; }
-    100% { transform: scale(1.3); opacity: 0; }
-  }
-
-  /* RESPONSIVE DESIGN FOR SMARTPHONES */
-  @media (max-width: 440px) {
-    .ultimate-box { width: 92%; height: 490px; }
-    .couple-names-ultimate { font-size: 1.9rem; }
-    .invitation-text { font-size: 0.75rem; margin: 10px 5px; }
-    .bismillah-text { font-size: 1.1rem; }
+  /* PHONE OPTIMIZATION */
+  @media (max-width: 480px) {
+    .couple-title { font-size: 2.3rem; }
+    .glass-plate { width: 140px; height: 140px; }
+    .holo-letters { font-size: 2.6rem; }
   }
 </style>
 
 <script>
-  function unveilRoyalBox() {
-    var box = document.getElementById('mainBox');
-    var glow = document.getElementById('boxGlow');
-    
-    if (box && !box.classList.contains('unfolded')) {
-      box.classList.add('unfolded');
-      if(glow) glow.style.opacity = "1";
-    }
-  }
+  function triggerHoloFracture() {
+    var overlay = document.getElementById('hologram-luxury-overlay');
+    if (!overlay || overlay.classList.contains('fractured')) return;
 
-  function shutdownOverlay() {
-    var overlay = document.getElementById('ultimate-box-overlay');
-    if (overlay) {
-      overlay.classList.add('exit-active');
+    // 1. Monogram fracture aur blast effect run karein
+    overlay.classList.add('fractured');
+    
+    // 2. Text display duration ke baad puri screen dissolve kar dein
+    setTimeout(function() {
+      overlay.classList.add('system-dissolved');
       setTimeout(function() {
         overlay.style.display = 'none';
-      }, 800);
-    }
+      }, 1000);
+    }, 4200); // 4.2 seconds ka complete automated premium run
   }
 </script>
-<!-- ================= END OF ULTIMATE 3D BOX ================= -->
+<!-- ================= END OF HOLOGRAM FRACTURE ================= -->
 
   
 <!-- ================= FILM GRAIN ================= -->
