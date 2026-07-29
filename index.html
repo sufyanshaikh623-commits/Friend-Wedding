@@ -12,256 +12,326 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= ULTRA-PREMIUM ROYAL VELVET BOX ENTRY (PASTE AT TOP OF BODY) ================= -->
-<div id="royal-box-overlay" class="box-overlay">
+<!-- ================= THE ULTIMATE 3D CINEMATIC VELVET BOX ================= -->
+<div id="ultimate-box-overlay" class="royal-overlay">
   
-  <div class="luxury-box-container" id="boxContainer">
-    <!-- Box Lid (Dhakkan) -->
-    <div class="box-lid" onclick="openRoyalBox()">
-      <div class="lid-pattern">
-        <div class="lid-monogram">S & F</div>
-        <p class="lid-tap-text">TAP TO OPEN THE BOX</p>
-      </div>
-    </div>
-
-    <!-- Inside Content (Dhabbe ke andar ka premium card) -->
-    <div class="box-interior">
-      <div class="card-satin-bed">
-        <div class="luxury-card-sheet">
-          <p class="card-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-          <span class="card-royal-crown">👑</span>
-          <h1 class="card-title-names">Sufyan & Fareeya</h1>
-          <p class="card-message">Together with their families, invite you to share in the joy of their wedding celebration.</p>
-          <div class="gold-seal-divider">♦ ⚜ ♦</div>
-          <p class="card-scroll-notice" onclick="closeOverlayComplete()">CLICK TO ENTER WEBSITE</p>
+  <div class="scene-3d">
+    <div class="ultimate-box" id="mainBox">
+      
+      <!-- 3D LID (DHAKKAN) - FLIPS UPWARD IN 3D SPACE -->
+      <div class="box-lid-3d" onclick="unveilRoyalBox()">
+        <div class="lid-outer-surface">
+          <div class="gold-filigree-border">
+            <div class="royal-emblem">S <span>&</span> F</div>
+            <p class="tap-to-unveil">TAP TO UNVEIL</p>
+            <div class="pulse-ring"></div>
+          </div>
         </div>
       </div>
+
+      <!-- BOX INTERIOR & LUXURY FLOATING CARD -->
+      <div class="box-base-3d">
+        <div class="internal-glow" id="boxGlow"></div>
+        <div class="satin-lining">
+          <div class="premium-glass-card">
+            <div class="card-border-line">
+              <p class="bismillah-text">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+              <div class="crown-icon">👑</div>
+              <h1 class="couple-names-ultimate">Sufyan & Fareeya</h1>
+              <div class="diamond-divider">♦ ⚜ ♦</div>
+              <p class="invitation-text">Together with their families, request the honor of your presence at their wedding celebration.</p>
+              <button class="enter-site-btn" onclick="shutdownOverlay()">ENTER EXPERIENCE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
 </div>
 
 <style>
-  /* LUXURY LAYER BASE */
-  .box-overlay {
+  /* PREMIUM AMBIANCE */
+  .royal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle, #140d07 0%, #050302 100%); /* Elegant dark room ambiance */
+    background: #030204;
     z-index: 9999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    perspective: 1500px;
   }
 
-  /* THE 3D VELVET BOX */
-  .luxury-box-container {
+  /* 3D PERSPECTIVE SETUP */
+  .scene-3d {
+    perspective: 1800px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ultimate-box {
     position: relative;
-    width: 420px;
+    width: 400px;
     height: 520px;
-    background: #2b1108; /* Deep Mahogany/Velvet texture */
-    border: 3px solid #c5a85c;
-    border-radius: 8px;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.9);
     transform-style: preserve-3d;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 2s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
-  /* THE LID (DHAKKAN) WITH VELVET & GOLD WORK */
-  .box-lid {
+  /* 3D LID FLIP ANIMATION */
+  .box-lid-3d {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background: radial-gradient(circle, #4a1505 0%, #2b0b02 100%); /* Royal Maroon Velvet */
-    border: 4px solid #f0d78c;
-    border-radius: 6px;
     z-index: 10;
     cursor: pointer;
-    transform-origin: left center;
-    transition: transform 1.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease 0.8s;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .lid-pattern {
-    width: 90%;
-    height: 92%;
-    border: 1px solid rgba(240, 215, 140, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transition: transform 1.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .lid-monogram {
-    font-size: 3rem;
-    font-family: 'Georgia', serif;
-    color: #f0d78c;
-    letter-spacing: 4px;
-    font-weight: bold;
-    text-shadow: 0 0 15px rgba(240, 215, 140, 0.6), 2px 2px 5px rgba(0,0,0,0.5);
-  }
-
-  .lid-tap-text {
-    margin-top: 30px;
-    font-family: 'Arial', sans-serif;
-    color: #ffffff;
-    font-size: 0.75rem;
-    letter-spacing: 3px;
-    opacity: 0.8;
-    animation: textPulse 1.8s infinite ease-in-out;
-  }
-
-  /* INSIDE INTERIOR DECORATION */
-  .box-interior {
+  .lid-outer-surface {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 1;
-    padding: 15px;
+    background: radial-gradient(circle at 50% 30%, #3a080d 0%, #120103 100%); /* Premium Midnight Maroon Velvet */
+    border: 5px solid #d4af37;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.95), inset 0 0 40px rgba(0,0,0,0.8);
+    padding: 16px;
     box-sizing: border-box;
-    background: #1c0904; /* Satin cloth shadow effect */
+    backface-visibility: hidden;
   }
 
-  .card-satin-bed {
+  .gold-filigree-border {
     width: 100%;
     height: 100%;
-    background: #fcfbfa; /* Luxury Matte Cardboard */
-    border-radius: 4px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.15);
-    padding: 20px;
-    box-sizing: border-box;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
-  .luxury-card-sheet {
+  .royal-emblem {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    color: #f3e5ab;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 2px 4px 10px rgba(0,0,0,0.9);
+  }
+  .royal-emblem span {
+    font-size: 2.2rem;
+    color: #fff;
+    font-style: italic;
+  }
+
+  .tap-to-unveil {
+    margin-top: 40px;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* INTERIOR BASE & LIGHT GLOW */
+  .box-base-3d {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #0f0204;
+    border-radius: 12px;
+    border: 3px solid #8a6d29;
+    z-index: 1;
+    padding: 12px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 50px #000;
+  }
+
+  .internal-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 1.2s ease 0.4s;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .satin-lining {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #170406 0%, #080001 100%);
+    border-radius: 8px;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* MATTE LUXURY CARD SHEET */
+  .premium-glass-card {
+    width: 100%;
+    height: 100%;
+    background: #fdfcf7; /* Ivory Matte Fine Paper Texture */
+    border-radius: 6px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    z-index: 3;
+  }
+
+  .card-border-line {
     width: 100%;
     height: 100%;
     border: 2px solid #c5a85c;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-family: 'Georgia', serif;
-    color: #2b1108;
+    color: #1a0a0d;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
-  .card-bismillah {
-    font-size: 1.4rem;
+  .bismillah-text {
+    font-size: 1.3rem;
     color: #c5a85c;
-    margin: 0 0 15px 0;
+    margin: 0 0 10px 0;
+    font-weight: bold;
   }
 
-  .card-royal-crown {
-    font-size: 1.5rem;
+  .crown-icon {
+    font-size: 1.4rem;
     margin-bottom: 5px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
   }
 
-  .card-title-names {
-    font-size: 2.3rem;
-    color: #1c0904;
-    font-weight: 400;
+  .couple-names-ultimate {
+    font-size: 2.4rem;
+    font-weight: 500;
     margin: 10px 0;
     letter-spacing: 1px;
+    color: #110204;
   }
 
-  .card-message {
-    font-size: 0.85rem;
-    color: #555;
-    line-height: 1.6;
-    margin: 10px 20px;
-  }
-
-  .gold-seal-divider {
+  .diamond-divider {
     color: #c5a85c;
-    font-size: 1.2rem;
-    margin: 15px 0;
+    font-size: 1rem;
+    margin: 10px 0;
   }
 
-  .card-scroll-notice {
+  .invitation-text {
+    font-size: 0.85rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 10px 15px;
+    max-width: 320px;
+  }
+
+  /* ROYAL BUTTON */
+  .enter-site-btn {
+    margin-top: 20px;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #c5a85c 0%, #9a7b36 100%);
+    border: none;
+    color: #fff;
     font-size: 0.75rem;
+    font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #c5a85c;
-    font-weight: bold;
-    cursor: pointer;
-    border: 1px solid #c5a85c;
-    padding: 8px 20px;
     border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(197, 168, 92, 0.3);
     transition: all 0.3s ease;
-    animation: buttonGlow 2s infinite;
   }
-  .card-scroll-notice:hover {
-    background: #c5a85c;
-    color: #fff;
+  .enter-site-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
   }
 
-  /* TRIGGER ANIMATION RULES */
-  .luxury-box-container.opened .box-lid {
-    transform: rotateY(-130deg); /* Smoothly swings open like a high-end box lid */
-    box-shadow: 15px 15px 30px rgba(0,0,0,0.5);
+  /* ANIMATION STATES */
+  .ultimate-box.unfolded .box-lid-3d {
+    transform: rotateX(115deg); /* Flips backwards seamlessly */
   }
-  
-  .box-overlay.fade-out-all {
+
+  .ultimate-box.unfolded {
+    transform: rotateX(10deg) scale(1.05); /* Slight tilt towards the user */
+  }
+
+  .royal-overlay.exit-active {
     opacity: 0;
     transition: opacity 0.8s ease;
     pointer-events: none;
   }
 
-  /* RESPONSIVE DESIGN FOR MOBILE DEVICES */
-  @media (max-width: 460px) {
-    .luxury-box-container {
-      width: 90%;
-      height: 480px;
-    }
-    .card-title-names {
-      font-size: 1.8rem;
-    }
-    .card-message {
-      font-size: 0.75rem;
-      margin: 10px 5px;
-    }
+  /* PULSE EFFECTS */
+  .pulse-ring {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 50%;
+    animation: corePulse 2s infinite ease-in-out;
+    pointer-events: none;
   }
 
-  /* KEYFRAMES ANIMATIONS */
-  @keyframes textPulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+  @keyframes corePulse {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.3); opacity: 0; }
   }
-  @keyframes buttonGlow {
-    0%, 100% { box-shadow: 0 0 5px rgba(197, 168, 92, 0.3); }
-    50% { box-shadow: 0 0 15px rgba(197, 168, 92, 0.7); }
+
+  /* RESPONSIVE DESIGN FOR SMARTPHONES */
+  @media (max-width: 440px) {
+    .ultimate-box { width: 92%; height: 490px; }
+    .couple-names-ultimate { font-size: 1.9rem; }
+    .invitation-text { font-size: 0.75rem; margin: 10px 5px; }
+    .bismillah-text { font-size: 1.1rem; }
   }
 </style>
 
 <script>
-  function openRoyalBox() {
-    var container = document.getElementById('boxContainer');
-    if (container && !container.classList.contains('opened')) {
-      container.classList.add('opened');
+  function unveilRoyalBox() {
+    var box = document.getElementById('mainBox');
+    var glow = document.getElementById('boxGlow');
+    
+    if (box && !box.classList.contains('unfolded')) {
+      box.classList.add('unfolded');
+      if(glow) glow.style.opacity = "1";
     }
   }
 
-  function closeOverlayComplete() {
-    var overlay = document.getElementById('royal-box-overlay');
+  function shutdownOverlay() {
+    var overlay = document.getElementById('ultimate-box-overlay');
     if (overlay) {
-      overlay.classList.add('fade-out-all');
+      overlay.classList.add('exit-active');
       setTimeout(function() {
         overlay.style.display = 'none';
       }, 800);
     }
   }
 </script>
-<!-- ================= END OF VELVET BOX INVITATION ================= -->
+<!-- ================= END OF ULTIMATE 3D BOX ================= -->
 
   
 <!-- ================= FILM GRAIN ================= -->
