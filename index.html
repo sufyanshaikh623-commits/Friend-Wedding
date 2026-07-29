@@ -12,250 +12,276 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= THE HOLOGRAM MONOGRAM FRACTURE ENTRY ================= -->
-<div id="hologram-luxury-overlay" class="holo-overlay">
+<!-- ================= THE ROYAL WAX SEAL ENVELOPE ENTRY ================= -->
+<div id="shahi-envelope-overlay" class="env-overlay">
   
-  <!-- Interactive Floating Glass Monogram -->
-  <div class="glass-monogram-container" id="monogramCore" onclick="triggerHoloFracture()">
-    <div class="glass-plate">
-      <div class="holo-letters">S<span>&</span>F</div>
-      <div class="shimmer-line"></div>
+  <div class="envelope-wrapper" id="envWrapper">
+    
+    <!-- THE INNER WEDDING CARD SHEET -->
+    <div class="inner-wedding-card">
+      <div class="card-gold-frame">
+        <p class="env-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+        <div class="env-crown">👑</div>
+        <h1 class="env-couple-names">Sufyan & Fareeya</h1>
+        <div class="env-divider">✦ ⚜ ✦</div>
+        <p class="env-details">THE WEDDING INVITATION</p>
+        <p class="env-date">16 . 11 . 2026</p>
+        <button class="env-proceed-btn" onclick="destroyEnvelopeOverlay()">ENTER WEBSITE</button>
+      </div>
     </div>
-    <p class="holo-hint-text">TAP TO REVEAL</p>
+
+    <!-- THE ENVELOPE FRONT COVER & FLAP -->
+    <div class="envelope-front-cover" onclick="crackWaxSeal()">
+      <div class="envelope-pattern-box">
+        
+        <!-- Interactive Wax Seal Stamp -->
+        <div class="wax-seal-stamp" id="mainWaxSeal">
+          <div class="wax-inner-design">
+            <div class="wax-monogram">S&F</div>
+          </div>
+        </div>
+        
+        <p class="wax-tap-hint">TAP WAX SEAL TO OPEN</p>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Hidden Premium Content Layer -->
-  <div class="holo-content-stage" id="holoContent">
-    <div class="cinematic-wrap">
-      <p class="arabic-blessing">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-      <h1 class="couple-title">Sufyan & Fareeya</h1>
-      <div class="luxury-divider-bar"></div>
-      <p class="wedding-timeline">NOVEMBER 16, 2026</p>
-    </div>
-  </div>
-
-  <!-- Shockwave Particle Background Rings -->
-  <div class="shockwave-ring ring-a"></div>
-  <div class="shockwave-ring ring-b"></div>
 </div>
 
 <style>
-  /* METALLIC DARK VOID ENVIRONMENT */
-  .holo-overlay {
+  /* RESET & BASE OVERLAY */
+  .env-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at 50% 50%, #0d0e12 0%, #040405 100%);
+    background: #09090b; /* Extreme dark luxury ambient */
     z-index: 9999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    perspective: 1200px;
   }
 
-  /* INTERACTIVE FLOATING GLASS MONOGRAM */
-  .glass-monogram-container {
+  /* ENVELOPE STRUCTURAL BOUNDS */
+  .envelope-wrapper {
     position: relative;
+    width: 380px;
+    height: 500px;
+    background: #18181b;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    overflow: hidden;
+  }
+
+  /* FRONT COVER (THE VELVET ENVELOPE WALL) */
+  .envelope-front-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 40%, #2a080c 0%, #110204 100%); /* Deep Maroon Velvet Cover */
+    border: 4px solid #c5a85c;
+    border-radius: 12px;
+    z-index: 5;
     cursor: pointer;
-    text-align: center;
-    z-index: 10;
-    transform-style: preserve-3d;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .glass-monogram-container:hover {
-    transform: scale(1.05) rotateY(10deg);
-  }
-
-  .glass-plate {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(240, 215, 140, 0.25);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-radius: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6), 
-                inset 0 0 20px rgba(240, 215, 140, 0.1);
-    overflow: hidden;
-    animation: floatingPlate 4s infinite ease-in-out;
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
   }
 
-  .holo-letters {
+  .envelope-pattern-box {
+    width: 92%;
+    height: 94%;
+    border: 1px dashed rgba(197, 168, 92, 0.4);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  /* INDIE CUSTOM WAX SEAL STAMP */
+  .wax-seal-stamp {
+    width: 85px;
+    height: 85px;
+    background: radial-gradient(circle, #f0d78c 0%, #c5a85c 60%, #9a7b36 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.3);
+    transition: all 0.5s ease;
+    animation: stampFloat 3s infinite ease-in-out;
+  }
+  
+  .wax-inner-design {
+    width: 73px;
+    height: 73px;
+    border: 2px double rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wax-monogram {
     font-family: 'Georgia', serif;
-    font-size: 3.2rem;
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #f0d78c;
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(240, 215, 140, 0.4);
-  }
-  .holo-letters span {
-    font-size: 2rem;
-    color: #ffffff;
-    font-style: italic;
-    margin: 0 4px;
+    color: #110204;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.2);
   }
 
-  /* MICRO SHIMMER REFLECTION LIGHT */
-  .shimmer-line {
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-    transform: skewX(-30deg);
-    animation: glassShimmer 6s infinite ease-in-out;
-  }
-
-  .holo-hint-text {
-    margin-top: 25px;
+  .wax-tap-hint {
+    margin-top: 30px;
     font-family: 'Arial', sans-serif;
     font-size: 0.7rem;
     color: #ffffff;
-    letter-spacing: 5px;
-    text-transform: uppercase;
+    letter-spacing: 3px;
     opacity: 0.6;
-    animation: microPulse 2s infinite ease-in-out;
+    animation: textPulse 2s infinite;
   }
 
-  /* TYPOGRAPHY CINEMATIC STAGE */
-  .holo-content-stage {
+  /* INSIDE WEDDING CARD MATERIALIZATION */
+  .inner-wedding-card {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 550px;
-    text-align: center;
-    z-index: 5;
-    opacity: 0;
-    transform: scale(0.95) translateZ(-50px);
-    transition: all 1.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    font-family: 'Georgia', serif;
-    pointer-events: none;
-  }
-
-  .arabic-blessing {
-    font-size: 1.4rem;
-    color: #f0d78c;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-  }
-
-  .couple-title {
-    font-size: 3.4rem;
-    color: #ffffff;
-    font-weight: 400;
-    letter-spacing: 2px;
-    margin: 15px 0;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-  }
-
-  .luxury-divider-bar {
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #f0d78c, transparent);
-    margin: 25px auto;
-  }
-
-  .wedding-timeline {
-    font-size: 1.1rem;
-    color: #a1a1aa;
-    letter-spacing: 4px;
-  }
-
-  /* SHOCKWAVE TRIGGERS ON FRACTURE */
-  .shockwave-ring {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border: 2px solid rgba(240, 215, 140, 0.5);
-    border-radius: 50%;
-    transform: scale(0);
-    opacity: 0;
-    pointer-events: none;
+    height: 100%;
+    background: #faf9f5; /* Pure Ivory Card Sheet */
+    padding: 15px;
+    box-sizing: border-box;
     z-index: 2;
   }
 
-  /* ACTIVE TRIGGER STYLES */
-  .holo-overlay.fractured .glass-monogram-container {
-    transform: scale(1.6);
+  .card-gold-frame {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #c5a85c;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .env-bismillah {
+    font-size: 1.3rem;
+    color: #c5a85c;
+    margin: 0 0 15px 0;
+    font-weight: bold;
+  }
+
+  .env-crown {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  .env-couple-names {
+    font-size: 2.2rem;
+    color: #110204;
+    margin: 10px 0;
+    font-weight: 400;
+  }
+
+  .env-divider {
+    color: #c5a85c;
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+
+  .env-details {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: #666;
+    text-transform: uppercase;
+  }
+
+  .env-date {
+    font-size: 1.1rem;
+    color: #c5a85c;
+    margin-top: 15px;
+    letter-spacing: 2px;
+  }
+
+  .env-proceed-btn {
+    margin-top: 25px;
+    padding: 10px 24px;
+    background: #110204;
+    border: 1px solid #c5a85c;
+    color: #f0d78c;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  .env-proceed-btn:hover {
+    background: #c5a85c;
+    color: #110204;
+  }
+
+  /* ACTION TRIGGERS */
+  .envelope-wrapper.unsealed .envelope-front-cover {
+    transform: translateY(100%); /* Slides down effortlessly to reveal the card */
     opacity: 0;
-    filter: blur(25px);
-    pointer-events: none;
-    transition: all 0.7s ease-out;
   }
 
-  .holo-overlay.fractured .ring-a {
-    animation: blastWave 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-  }
-  .holo-overlay.fractured .ring-b {
-    animation: blastWave 1.5s cubic-bezier(0.1, 0.6, 0.2, 1) 0.1s forwards;
-  }
-
-  .holo-overlay.fractured .holo-content-stage {
-    opacity: 1;
-    transform: scale(1) translateZ(0);
-    transition-delay: 0.5s;
-  }
-
-  /* SYSTEM SHUTDOWN DISSOLVE */
-  .holo-overlay.system-dissolved {
+  .env-overlay.fade-out-entirely {
     opacity: 0;
-    transition: opacity 1s ease;
+    transition: opacity 0.8s ease;
     pointer-events: none;
   }
 
-  /* EFFECT KEYFRAMES */
-  @keyframes floatingPlate {
-    0%, 100% { transform: translateY(0px) rotateX(0deg); }
-    50% { transform: translateY(-8px) rotateX(4deg); }
+  /* BASIC KEYFRAMES */
+  @keyframes stampFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
   }
-  @keyframes glassShimmer {
-    0% { left: -150%; }
-    30%, 100% { left: 150%; }
-  }
-  @keyframes microPulse {
+  @keyframes textPulse {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.8; }
   }
-  @keyframes blastWave {
-    0% { transform: scale(0); opacity: 1; border-width: 4px; }
-    40% { opacity: 0.6; }
-    100% { transform: scale(80); opacity: 0; filter: blur(15px); border-width: 1px; }
-  }
 
-  /* PHONE OPTIMIZATION */
-  @media (max-width: 480px) {
-    .couple-title { font-size: 2.3rem; }
-    .glass-plate { width: 140px; height: 140px; }
-    .holo-letters { font-size: 2.6rem; }
+  /* MOBILE RESPONSIVE LAYOUT */
+  @media (max-width: 400px) {
+    .envelope-wrapper { width: 92%; height: 470px; }
+    .env-couple-names { font-size: 1.8rem; }
   }
 </style>
 
 <script>
-  function triggerHoloFracture() {
-    var overlay = document.getElementById('hologram-luxury-overlay');
-    if (!overlay || overlay.classList.contains('fractured')) return;
+  function crackWaxSeal() {
+    var wrapper = document.getElementById('envWrapper');
+    if (wrapper && !wrapper.classList.contains('unsealed')) {
+      wrapper.classList.add('unsealed');
+    }
+  }
 
-    // 1. Monogram fracture aur blast effect run karein
-    overlay.classList.add('fractured');
-    
-    // 2. Text display duration ke baad puri screen dissolve kar dein
-    setTimeout(function() {
-      overlay.classList.add('system-dissolved');
+  function destroyEnvelopeOverlay() {
+    var overlay = document.getElementById('shahi-envelope-overlay');
+    if (overlay) {
+      overlay.classList.add('fade-out-entirely');
       setTimeout(function() {
         overlay.style.display = 'none';
-      }, 1000);
-    }, 4200); // 4.2 seconds ka complete automated premium run
+      }, 800);
+    }
   }
 </script>
-<!-- ================= END OF HOLOGRAM FRACTURE ================= -->
+<!-- ================= END OF ROYAL WAX SEAL ================= -->
 
   
 <!-- ================= FILM GRAIN ================= -->
