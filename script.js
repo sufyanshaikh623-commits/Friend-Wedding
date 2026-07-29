@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // ==========================================================================
+  // 0️⃣ ROYAL SHAHI ENTRY PRELOADER LOGIC
+  // ==========================================================================
+  setTimeout(function() {
+    const preloader = document.getElementById("royal-preloader");
+    if (preloader) {
+      preloader.classList.add("fade-out");
+      
+      // Gates poore split (khulne) ke baad DOM se hide kar denge
+      setTimeout(function() {
+        preloader.style.display = "none";
+      }, 1200); // 1.2s CSS transition time match kiya
+    }
+  }, 3500); // 3.5 Seconds tak baggi entry animation chalegi
+
+
+  // ==========================================================================
+  // 1️⃣ MAIN INVITATION & MUSIC LOGIC
+  // ==========================================================================
   const openInviteBtn = document.getElementById('openInviteBtn');
   const envelopeScreen = document.getElementById('envelopeScreen');
   const siteMain = document.getElementById('siteMain');
@@ -13,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       envelopeScreen.classList.add('is-opened');
       // Completely hide after transition so clicks pass through to main site
       setTimeout(() => {
-        envelopeScreen.style.display = 'flex';
+        envelopeScreen.style.display = 'flex'; // Fix: keeps layout active if required
       }, 1200);
     }
     
@@ -53,7 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mouse Cursor Glow
+
+  // ==========================================================================
+  // 2️⃣ MOUSE CURSOR GLOW EFFECT
+  // ==========================================================================
   const cursorGlow = document.getElementById('cursorGlow');
   if(window.matchMedia('(hover: hover) and (pointer: fine)').matches && cursorGlow) {
     window.addEventListener('mousemove', (e) => {
@@ -63,7 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mouseleave', () => cursorGlow.classList.remove('is-active'));
   }
 
-  // Scroll Progress & Reveal
+
+  // ==========================================================================
+  // 3️⃣ SCROLL PROGRESS & REVEAL SECTION
+  // ==========================================================================
   const progressBar = document.getElementById('scrollProgressBar');
   const sections = document.querySelectorAll('section, header');
   const navDots = document.querySelectorAll('.side-dot');
@@ -98,7 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
-  // Wedding Countdown Timer (Target: 16 Nov 2026)
+
+  // ==========================================================================
+  // 4️⃣ WEDDING COUNTDOWN TIMER (Target: 16 Nov 2026)
+  // ==========================================================================
   const targetDate = new Date('2026-11-16T19:00:00').getTime();
   
   function updateCountdown() {
@@ -141,7 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCountdown();
   const countdownInterval = setInterval(updateCountdown, 1000);
 
-  // Dynamic Floating Gold Petals
+
+  // ==========================================================================
+  // 5️⃣ DYNAMIC FLOATING GOLD PETALS
+  // ==========================================================================
   const petalsContainer = document.getElementById('petals');
   const roseSVG = `<svg viewBox="0 0 24 24" width="16" height="16" fill="var(--gold-light)"><path d="M12,2 C12,2 4,10 4,15 C4,19.4 7.6,23 12,23 C16,23 20,19.4 20,15 C20,10 12,2 12,2 Z" opacity="0.45"/></svg>`;
 
@@ -161,7 +192,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   setInterval(createFloatingElement, 900);
 
-  // Firebase Blessings Wall
+
+  // ==========================================================================
+  // 6️⃣ FIREBASE BLESSINGS WALL & FIREWORKS
+  // ==========================================================================
   const firebaseConfig = {
     apiKey: "AIzaSyB6KYel7PoUZUcPIDJ1zvuu9EK520WvWEc",
     authDomain: "wedding-card-a18fc.firebaseapp.com",
@@ -199,6 +233,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (name && message) {
           blessingsRef.push({ name, message, timestamp: Date.now() });
+          
+          // Trigger Gold Fireworks on submit
+          const btn = blessingForm.querySelector('button[type="submit"]');
+          if (btn) {
+            const rect = btn.getBoundingClientRect();
+            triggerGoldFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+          } else {
+            triggerGoldFireworks(window.innerWidth / 2, window.innerHeight / 2);
+          }
+
           nameInput.value = '';
           messageInput.value = '';
           if (messagesDisplay) messagesDisplay.scrollTop = 0;
@@ -207,7 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Google Calendar Buttons Handler
+
+  // ==========================================================================
+  // 7️⃣ GOOGLE CALENDAR BUTTONS HANDLER (Universal & Direct)
+  // ==========================================================================
   const baratBtn = document.getElementById('addBaratToCalendar');
   const valimaBtn = document.getElementById('addValimaToCalendar');
 
@@ -226,18 +273,12 @@ document.addEventListener('DOMContentLoaded', () => {
       window.open(url, '_blank');
     });
   }
-});
 
-// Universal Text-Based Calendar Linker
-document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.event-card a, .event-card button');
-  
-  buttons.forEach(btn => {
+  // Universal Text-Based Linker fallback
+  const calButtons = document.querySelectorAll('.event-card a, .event-card button');
+  calButtons.forEach(btn => {
     const text = btn.innerText.trim().toLowerCase();
-    
-    // Check if it's an "Add to Calendar" button
     if (text.includes('add to calendar')) {
-      // Find which card it belongs to by looking at the parent card's heading
       const card = btn.closest('.event-card');
       const cardTitle = card ? card.querySelector('h3').innerText.toLowerCase() : '';
       
@@ -256,23 +297,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-});// 3D Tilt Effect on Couple Cards
-document.addEventListener('DOMContentLoaded', () => {
-  const tiltCards = document.querySelectorAll('.flip-card');
 
+
+  // ==========================================================================
+  // 8️⃣ 3D TILT EFFECT ON COUPLE CARDS
+  // ==========================================================================
+  const tiltCards = document.querySelectorAll('.flip-card');
   tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left; // x coordinate inside card
-      const y = e.clientY - rect.top;  // y coordinate inside card
-      
+      const x = e.clientX - rect.left; 
+      const y = e.clientY - rect.top;  
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      
-      // Calculate rotation angle (max 15 degrees)
       const rotateX = -((y - centerY) / centerY) * 12;
       const rotateY = ((x - centerX) / centerX) * 12;
-
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
     });
 
@@ -285,21 +324,90 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.transition = 'none';
     });
     
-    // Tap to flip on mobile / click on desktop
     card.addEventListener('click', () => {
       card.classList.toggle('flipped');
     });
   });
-});// Golden Fireworks Burst Effect Function
+
+
+  // ==========================================================================
+  // 9️⃣ VIP DIGITAL PASS MODAL OPEN/CLOSE & DOWNLOAD
+  // ==========================================================================
+  const vipOpenBtn = document.getElementById("openVipModalBtn");
+  const vipCloseBtn = document.getElementById("closeVipModalBtn");
+  const vipModal = document.getElementById("vipModal");
+  const guestNameInput = document.getElementById("guestName");
+  const passGuestName = document.getElementById("passGuestName");
+  const downloadBtn = document.getElementById('downloadPassBtn');
+  const passCard = document.getElementById('vipPassCardContent');
+
+  if (vipOpenBtn && vipModal) {
+    vipOpenBtn.addEventListener("click", function() {
+      if (guestNameInput && guestNameInput.value.trim() !== "") {
+        passGuestName.textContent = guestNameInput.value.trim();
+      } else {
+        passGuestName.textContent = "Honourable Guest";
+      }
+      vipModal.classList.add("active");
+    });
+  }
+
+  if (vipCloseBtn && vipModal) {
+    vipCloseBtn.addEventListener("click", function() {
+      vipModal.classList.remove("active");
+    });
+  }
+
+  if (vipModal) {
+    vipModal.addEventListener("click", function(e) {
+      if (e.target === vipModal) {
+        vipModal.classList.remove("active");
+      }
+    });
+  }
+
+  if (downloadBtn && passCard) {
+    downloadBtn.addEventListener('click', () => {
+      if (typeof html2canvas === 'undefined') {
+        alert("Download library is still loading. Please try again in a few seconds.");
+        return;
+      }
+      downloadBtn.innerText = "Generating...";
+      
+      html2canvas(passCard, {
+        backgroundColor: '#071208',
+        scale: 2,
+        useCORS: true
+      }).then(canvas => {
+        const imageURL = canvas.toDataURL('image/jpeg', 1.0);
+        const link = document.createElement('a');
+        link.download = 'Sufyan-Fareeya-VIP-Pass.jpg';
+        link.href = imageURL;
+        
+        try {
+          link.click();
+        } catch (e) {
+          window.open(imageURL, '_blank');
+        }
+        downloadBtn.innerText = "Download JPEG";
+      }).catch(err => {
+        console.error("Error generating image:", err);
+        alert("Could not generate image. Please take a screenshot instead.");
+        downloadBtn.innerText = "Download JPEG";
+      });
+    });
+  }
+});
+
+// Universal Golden Fireworks Burst Generator Function
 function triggerGoldFireworks(x, y) {
-  const sparkCount = 30; // Number of sparks in a burst
+  const sparkCount = 30; 
   for (let i = 0; i < sparkCount; i++) {
     const spark = document.createElement('div');
     spark.classList.add('firework-spark');
     spark.style.left = x + 'px';
     spark.style.top = y + 'px';
 
-    // Random direction for explosion
     const angle = Math.random() * Math.PI * 2;
     const distance = Math.random() * 120 + 40;
     const dx = Math.cos(angle) * distance;
@@ -310,153 +418,8 @@ function triggerGoldFireworks(x, y) {
 
     document.body.appendChild(spark);
 
-    // Remove spark after animation completes
     setTimeout(() => {
       spark.remove();
     }, 800);
   }
 }
-
-// Automatically trigger fireworks when someone submits a blessing
-document.addEventListener('DOMContentLoaded', () => {
-  const blessingForm = document.getElementById('blessingForm');
-  if (blessingForm) {
-    blessingForm.addEventListener('submit', (e) => {
-      // Get position of the submit button to burst fireworks right there
-      const btn = blessingForm.querySelector('button[type="submit"]');
-      if (btn) {
-        const rect = btn.getBoundingClientRect();
-        triggerGoldFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
-      } else {
-        // Fallback to center of screen
-        triggerGoldFireworks(window.innerWidth / 2, window.innerHeight / 2);
-      }
-    });
-  }
-});
-
-// VIP Digital Pass Logic
-document.addEventListener('DOMContentLoaded', () => {
-  const openBtn = document.getElementById('openVipModalBtn');
-  const modal = document.getElementById('vipModal');
-  const closeBtn = document.getElementById('closeVipModalBtn');
-  const nameDisplay = document.getElementById('passGuestName');
-
-  if (openBtn && modal) {
-    openBtn.addEventListener('click', () => {
-      let guestName = prompt("Please enter your full name for the VIP Pass:", "Guest Name");
-      if (guestName && guestName.trim() !== "") {
-        nameDisplay.innerText = guestName.trim();
-      } else {
-        nameDisplay.innerText = "Honoured Guest";
-      }
-      modal.classList.add('is-active');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('is-active');
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('is-active');
-      }
-    });
-  }
-});
-
-// Updated VIP Pass JPEG Download with Fallback
-document.addEventListener('DOMContentLoaded', () => {
-  const downloadBtn = document.getElementById('downloadPassBtn');
-  const passCard = document.getElementById('vipPassCardContent');
-
-  if (downloadBtn && passCard) {
-    downloadBtn.addEventListener('click', () => {
-      // Check if html2canvas is loaded
-      if (typeof html2canvas === 'undefined') {
-        alert("Download library is still loading. Please try again in a few seconds.");
-        return;
-      }
-
-      downloadBtn.innerText = "Generating...";
-      
-      html2canvas(passCard, {
-        backgroundColor: '#071208',
-        scale: 2,
-        useCORS: true
-      }).then(canvas => {
-        const imageURL = canvas.toDataURL('image/jpeg', 1.0);
-        
-        // Try automatic download via anchor tag
-        const link = document.createElement('a');
-        link.download = 'Sufyan-Fareeya-VIP-Pass.jpg';
-        link.href = imageURL;
-        
-        try {
-          link.click();
-        } catch (e) {
-          // Fallback for mobile browsers that block direct click
-          window.open(imageURL, '_blank');
-        }
-        
-        downloadBtn.innerText = "Download JPEG";
-      }).catch(err => {
-        console.error("Error generating image:", err);
-        alert("Could not generate image. Please take a screenshot instead.");
-        downloadBtn.innerText = "Download JPEG";
-      });
-    });
-    
-  }
-});
-// --- VIP Modal Open/Close Fix ---
-document.addEventListener("DOMContentLoaded", function() {
-    const openBtn = document.getElementById("openVipModalBtn");
-    const closeBtn = document.getElementById("closeVipModalBtn");
-    const modal = document.getElementById("vipModal");
-    const guestNameInput = document.getElementById("guestName");
-    const passGuestName = document.getElementById("passGuestName");
-
-    if (openBtn && modal) {
-        openBtn.addEventListener("click", function() {
-            // Agar guest name bhara hai toh pass par wohi naam show ho jaye
-            if (guestNameInput && guestNameInput.value.trim() !== "") {
-                passGuestName.textContent = guestNameInput.value.trim();
-            } else {
-                passGuestName.textContent = "Honourable Guest";
-            }
-            modal.classList.add("active");
-        });
-    }
-
-    if (closeBtn && modal) {
-        closeBtn.addEventListener("click", function() {
-            modal.classList.remove("active");
-        });
-    }
-
-    // Modal ke background (dark overlay) par click karne se bhi band ho jaye
-    if (modal) {
-        modal.addEventListener("click", function(e) {
-            if (e.target === modal) {
-                modal.classList.remove("active");
-            }
-        });
-    }
-});
-
-// ROYAL PRELOADER EXCLUSIVITY
-document.addEventListener("DOMContentLoaded", function() {
-    // 3.5 Seconds tak animation chalne ke baad fade-out trigger hoga
-    setTimeout(function() {
-        const preloader = document.getElementById("royal-preloader");
-        if(preloader) {
-            preloader.classList.add("fade-out");
-            
-            // Gates poore khulne ke baad element ko dom se hide kar denge
-            setTimeout(function() {
-                preloader.style.display = "none";
-            }, 1200); // match css gate transition length
-        }
-    }, 3500); 
-});
