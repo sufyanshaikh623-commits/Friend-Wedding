@@ -12,276 +12,236 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= LUXURY HOLOGRAPHIC RING BOX ENTRY (PASTE AT TOP OF BODY) ================= -->
-<div id="premium-hologram-overlay" class="holo-overlay">
+<!-- ================= ULTRA-LUXURY SHAHI MAHAL ARCHWAY REVEAL (PASTE AT TOP OF BODY) ================= -->
+<div id="shahi-cinematic-overlay" class="darbar-overlay">
   
-  <!-- Ambient Gold Particle Dust -->
-  <div class="particle-container"></div>
-
-  <div class="holo-stage">
-    <!-- Interactive 3D Luxury Ring Box -->
-    <div class="ring-box-wrapper" id="ringBox" onclick="triggerHologramReveal()">
-      <div class="box-lid"></div>
-      <div class="box-body">
-        <div class="box-cushion">
-          <div class="sparkle-ring">💍</div>
-        </div>
-      </div>
-      <p class="box-tap-hint">TAP TO UNBOX FOREVER</p>
-    </div>
-
-    <!-- Holographic Light Beam & Content Projection -->
-    <div class="light-beam" id="lightBeam"></div>
-    
-    <div class="holo-projection" id="holoProjection">
-      <div class="holo-crown">👑</div>
-      <h1 class="holo-couple">Sufyan<br><span class="and-sym">&</span><br>Fareeya</h1>
-      <div class="holo-divider"></div>
-      <p class="holo-announcement">SAVE THE DATE</p>
-      <p class="holo-date">16 . 11 . 2026</p>
-    </div>
+  <!-- Hanging Royal Chandelier (Jhoomar) -->
+  <div class="chandelier-container">
+    <div class="chandelier-rope"></div>
+    <div class="chandelier-body">✨ 💎 ✨</div>
+    <div class="chandelier-glow"></div>
   </div>
 
+  <!-- The 3D Mahal Stage -->
+  <div class="mahal-stage" id="mahalStage">
+    
+    <!-- Outer Royal Archway Frame -->
+    <div class="mughal-archway">
+      <div class="archway-inner-border"></div>
+    </div>
+
+    <!-- Center Calligraphy Text Group -->
+    <div class="darbar-content">
+      <p class="royal-bismillah">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+      <h1 class="royal-names">Sufyan <span class="gold-and">&</span> Fareeya</h1>
+      <p class="royal-tag">THE WEDDING INVITATION</p>
+      <button class="royal-enter-btn" onclick="startCinematicZoom()">BE OUR GUEST</button>
+    </div>
+
+  </div>
+
+  <!-- Floating Gold Luxury Dust Particles -->
+  <div class="gold-dust-layer"></div>
 </div>
 
 <style>
-  /* LUXURY OVERLAY BASE */
-  .holo-overlay {
+  /* DEEP ROYAL MATTE BACKGROUND */
+  .darbar-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #050508; /* Deep rich dark room effect */
-    z-index: 999999999 !important;
+    background: #07070a; /* Dark Luxury Atmosphere */
+    z-index: 9999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    perspective: 1000px;
+    perspective: 2000px; /* Crucial for 3D Zoom Effect */
   }
 
-  /* STAGE SETUP */
-  .holo-stage {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    height: 600px;
+  /* HANGING CRYSTAL CHANDELIER (JHOOMAR) */
+  .chandelier-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    z-index: 5;
+    animation: chandelierSway 4s infinite ease-in-out;
+  }
+  .chandelier-rope {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, #c5a85c, #f0d78c);
+  }
+  .chandelier-body {
+    font-size: 1.8rem;
+    color: #f0d78c;
+    text-shadow: 0 0 15px #f0d78c, 0 0 30px rgba(240, 215, 140, 0.6);
+    letter-spacing: -5px;
+  }
+  .chandelier-glow {
+    position: absolute;
+    bottom: -10px;
+    width: 80px;
+    height: 40px;
+    background: radial-gradient(circle, rgba(240, 215, 140, 0.3) 0%, transparent 70%);
+    filter: blur(5px);
   }
 
-  /* 3D RING BOX */
-  .ring-box-wrapper {
+  /* 3D MAHAL CONTAINER */
+  .mahal-stage {
     position: relative;
-    width: 140px;
-    height: 140px;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 10;
-  }
-  .ring-box-wrapper:hover {
-    transform: scale(1.05) rotateY(10deg);
-  }
-
-  /* BOX PARTS WITH MATTE VELVET & GOLD EDGE */
-  .box-lid, .box-body {
-    position: absolute;
     width: 100%;
-    background: linear-gradient(135deg, #1f0505, #110202); /* Deep Royal Velvet Red */
-    border: 2px solid #f0d78c; /* Golden Rim */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 0 15px rgba(240,215,140,0.2);
-    transition: transform 0.8s ease;
-  }
-  
-  .box-lid {
-    height: 50px;
-    top: 20px;
-    border-radius: 8px 8px 0 0;
-    transform-origin: top center;
-    z-index: 3;
-  }
-  
-  .box-body {
-    height: 70px;
-    top: 68px;
-    border-radius: 0 0 8px 8px;
-    z-index: 2;
-  }
-
-  .box-cushion {
-    position: absolute;
-    width: 80%;
-    height: 20px;
-    background: #0c0202;
-    top: -10px;
-    left: 10%;
-    border-radius: 50%;
+    max-width: 600px;
+    height: 550px;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    transform-style: preserve-3d;
+    transition: transform 2.2s cubic-bezier(0.7, 0, 0.3, 1), opacity 1.8s ease;
   }
 
-  .sparkle-ring {
-    font-size: 1.8rem;
-    transform: translateY(-5px);
-    text-shadow: 0 0 15px #fff;
-    animation: ringFloat 2s infinite ease-in-out;
-  }
-
-  .box-tap-hint {
+  /* ROYAL MUGHAL MEHRAAB (ARCHWAY FRAME) */
+  .mughal-archway {
     position: absolute;
-    bottom: -40px;
-    width: 200px;
-    left: calc(50% - 100px);
-    text-align: center;
-    color: #f0d78c;
-    font-family: 'Arial', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    animation: pulseGlow 1.5s infinite;
-  }
-
-  /* HOLOGRAM LIGHT BEAM EFFECT */
-  .light-beam {
-    position: absolute;
-    bottom: 300px;
-    width: 160px;
-    height: 0px;
-    background: linear-gradient(to top, rgba(240, 215, 140, 0.4) 0%, rgba(240, 215, 140, 0) 100%);
-    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-    opacity: 0;
-    transition: height 1s ease 0.4s, opacity 0.8s ease 0.4s;
+    width: 420px;
+    height: 520px;
+    border: 3px solid #c5a85c;
+    border-radius: 200px 200px 20px 20px; /* Iconic Islamic/Mughal Archway shape */
+    box-shadow: 0 0 40px rgba(197, 168, 92, 0.15), inset 0 0 30px rgba(197, 168, 92, 0.1);
+    transform: translateZ(-100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     pointer-events: none;
-    z-index: 4;
+  }
+  .archway-inner-border {
+    width: 95%;
+    height: 96%;
+    border: 1px dashed rgba(240, 215, 140, 0.4);
+    border-radius: 190px 190px 15px 15px;
   }
 
-  /* PROJECTED HOLOGRAM CONTENT */
-  .holo-projection {
-    position: absolute;
-    bottom: 320px;
+  /* TEXT & BANNER CONTENT */
+  .darbar-content {
     text-align: center;
+    color: #ffffff;
     font-family: 'Georgia', serif;
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
-    pointer-events: none;
-    z-index: 5;
+    z-index: 3;
+    transform: translateZ(50px); /* Pushes text forward in 3D space */
   }
 
-  .holo-crown {
-    font-size: 1.5rem;
+  .royal-bismillah {
+    font-size: 1.3rem;
     color: #f0d78c;
-    text-shadow: 0 0 10px rgba(240, 215, 140, 0.6);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    opacity: 0.9;
   }
 
-  .holo-couple {
-    font-size: 2.8rem;
-    color: #fff;
-    line-height: 1.1;
+  .royal-names {
+    font-size: 3.2rem;
     font-weight: 400;
-    letter-spacing: 2px;
-    text-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(240,215,140,0.3);
+    letter-spacing: 1px;
+    margin: 10px 0;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(255,255,255,0.2), 0 4px 10px rgba(0,0,0,0.7);
   }
-  
-  .and-sym {
-    font-size: 1.8rem;
+  .gold-and {
     color: #f0d78c;
     font-style: italic;
+    font-size: 2.2rem;
+    display: block;
+    margin: 5px 0;
   }
 
-  .holo-divider {
-    width: 60px;
-    height: 1px;
-    background: #f0d78c;
-    margin: 20px auto;
-    box-shadow: 0 0 8px #f0d78c;
-  }
-
-  .holo-announcement {
+  .royal-tag {
     font-size: 0.8rem;
-    letter-spacing: 4px;
-    color: #f0d78c;
+    letter-spacing: 5px;
+    color: #a1a1aa;
+    margin-bottom: 40px;
   }
 
-  .holo-date {
-    font-size: 1.3rem;
-    color: #fff;
-    letter-spacing: 2px;
-    margin-top: 5px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  /* SHAHI LUXURY BUTTON */
+  .royal-enter-btn {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #c5a85c 0%, #9a7b36 100%);
+    border: none;
+    color: #07070a;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(197, 168, 92, 0.4);
+    transition: all 0.4s ease;
+  }
+  .royal-enter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(240, 215, 140, 0.7);
+    background: linear-gradient(135deg, #f0d78c 0%, #c5a85c 100%);
   }
 
-  /* ANIMATION STATES WHEN CLICKED */
-  .holo-stage.unboxed .box-lid {
-    transform: rotateX(-110deg) translateY(-25px);
+  /* CINEMATIC ZOOM ANIMATION STATE TRIGGER */
+  .darbar-overlay.zoom-active .mahal-stage {
+    transform: translateZ(1200px) scale(3); /* Camera flies right through the door and text */
+    opacity: 0;
   }
   
-  .holo-stage.unboxed .box-cushion {
-    opacity: 1;
-  }
-
-  .holo-stage.unboxed .box-tap-hint {
+  .darbar-overlay.zoom-active {
     opacity: 0;
-  }
-
-  .holo-stage.unboxed .light-beam {
-    height: 350px;
-    opacity: 1;
-  }
-
-  .holo-stage.unboxed .holo-projection {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  /* GLOBAL FADE OUT AFTER 5 SECONDS */
-  .holo-overlay.fade-out {
-    opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.5s ease 0.8s; /* Whole screen fades out smoothly during zoom */
     pointer-events: none;
   }
 
-  /* EXTRA KEYFRAMES */
-  @keyframes pulseGlow {
-    0%, 100% { opacity: 0.5; text-shadow: 0 0 2px #f0d78c; }
-    50% { opacity: 1; text-shadow: 0 0 12px #f0d78c; }
+  /* SWAYING CHANDELIER KEYFRAME */
+  @keyframes chandelierSway {
+    0%, 100% { transform: translateX(-50%) rotate(1.5deg); }
+    50% { transform: translateX(-50%) rotate(-1.5deg); }
   }
-  @keyframes ringFloat {
-    0%, 100% { transform: translateY(-5px) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(5deg); }
+
+  /* GOLD DUST PARTICLES BACKGROUND EFFECT */
+  .gold-dust-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(240, 215, 140, 0.15) 1px, transparent 0);
+    background-size: 40px 40px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* MOBILE RESPONSIVE ADJUSTMENTS */
+  @media (max-width: 480px) {
+    .mughal-archway { width: 300px; height: 420px; }
+    .royal-names { font-size: 2.2rem; }
+    .gold-and { font-size: 1.6rem; }
+    .royal-bismillah { font-size: 1.1rem; }
   }
 </style>
 
 <script>
-  function triggerHologramReveal() {
-    var stage = document.querySelector('.holo-stage');
-    var overlay = document.getElementById('premium-hologram-overlay');
+  function startCinematicZoom() {
+    var overlay = document.getElementById('shahi-cinematic-overlay');
     
-    // Check lagayein ke bar bar click karne par animation glitch na ho
-    if(stage.classList.contains('unboxed')) return;
-
-    // 1. Box Open aur Hologram On karein
-    stage.classList.add('unboxed');
-    
-    // 2. Poori screen 5.5 seconds baad smoothly fade out ho kar aapki main layout show karegi
-    setTimeout(function() {
-      if(overlay) {
-        overlay.classList.add('fade-out');
-        setTimeout(function() {
-          overlay.style.display = 'none';
-        }, 1200);
-      }
-    }, 5500);
+    if (overlay) {
+      // 1. Cinematic Zoom aur fade class add karein
+      overlay.classList.add('zoom-active');
+      
+      // 2. Animation poori hone par element ko completely delete kar dein taake background page active ho jaye
+      setTimeout(function() {
+        overlay.style.display = 'none';
+      }, 2200); // 2.2 Seconds ke andar seamless entrance
+    }
   }
 </script>
-<!-- ================= END OF HOLOGRAM REVEAL ================= -->
+<!-- ================= END OF CINEMATIC REVEAL ================= -->
 
   
 <!-- ================= FILM GRAIN ================= -->
