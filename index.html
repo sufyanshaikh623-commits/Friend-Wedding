@@ -12,233 +12,278 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- ================= AUTOMATIC ROYAL ENVELOPE (PURE CSS - NO CLICK REQUIRED) ================= -->
-<div class="royal-overlay">
-  <!-- Envelope Box: Mouse lane par ya Mobile par tap karne par automatic khulega -->
-  <div class="envelope-box">
-    
-    <!-- Gold Wax Seal (Mohar) -->
-    <div class="envelope-seal">
-      <div class="seal-txt">S & F<br><small>👑</small></div>
-    </div>
-    
-    <!-- Flaps -->
-    <div class="flap top-flap"></div>
-    <div class="flap left-flap"></div>
-    <div class="flap right-flap"></div>
-    <div class="flap bottom-flap"></div>
-    
-    <!-- Dynamic Inside Card -->
-    <div class="envelope-card">
-      <div class="card-inner-frame">
-        <p class="card-bismillah">Bismillah-ir-Rahman-ir-Rahim</p>
-        <h1 class="card-names-title">Sufyan & Fareeya</h1>
-        <p class="card-invite-txt">Are inviting you to celebrate their wedding</p>
-        <div class="card-crown">👑</div>
-        <p class="card-hint">Tap / Scroll Down To Enter</p>
+<!-- ================= LUXURY HOLOGRAPHIC RING BOX ENTRY (PASTE AT TOP OF BODY) ================= -->
+<div id="premium-hologram-overlay" class="holo-overlay">
+  
+  <!-- Ambient Gold Particle Dust -->
+  <div class="particle-container"></div>
+
+  <div class="holo-stage">
+    <!-- Interactive 3D Luxury Ring Box -->
+    <div class="ring-box-wrapper" id="ringBox" onclick="triggerHologramReveal()">
+      <div class="box-lid"></div>
+      <div class="box-body">
+        <div class="box-cushion">
+          <div class="sparkle-ring">💍</div>
+        </div>
       </div>
+      <p class="box-tap-hint">TAP TO UNBOX FOREVER</p>
     </div>
+
+    <!-- Holographic Light Beam & Content Projection -->
+    <div class="light-beam" id="lightBeam"></div>
     
+    <div class="holo-projection" id="holoProjection">
+      <div class="holo-crown">👑</div>
+      <h1 class="holo-couple">Sufyan<br><span class="and-sym">&</span><br>Fareeya</h1>
+      <div class="holo-divider"></div>
+      <p class="holo-announcement">SAVE THE DATE</p>
+      <p class="holo-date">16 . 11 . 2026</p>
+    </div>
   </div>
+
 </div>
 
 <style>
-  /* FULL SCREEN SHAHI BACKGROUND */
-  .royal-overlay {
+  /* LUXURY OVERLAY BASE */
+  .holo-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle, #1f1105 0%, #080401 100%);
-    z-index: 99999999 !important;
+    background: #050508; /* Deep rich dark room effect */
+    z-index: 999999999 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    perspective: 1000px;
   }
 
-  /* THE ENVELOPE CONTROLLER */
-  .envelope-box {
+  /* STAGE SETUP */
+  .holo-stage {
     position: relative;
-    width: 420px;
-    height: 280px;
-    background: #361b10;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.9);
-    border: 1px solid #c5a85c;
-    cursor: pointer;
-  }
-
-  /* FLAPS SETUP */
-  .flap {
-    position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 3;
-    transition: transform 0.8s ease-in-out, z-index 0.6s ease;
-  }
-
-  .top-flap {
-    background: linear-gradient(135deg, transparent 50%, #442417 50%), 
-                linear-gradient(225deg, transparent 50%, #442417 50%);
-    background-size: 50% 100%;
-    background-repeat: no-repeat;
-    background-position: left top, right top;
-    height: 50%;
-    transform-origin: top center;
-    border-bottom: 1px solid rgba(197, 168, 92, 0.2);
-  }
-
-  .bottom-flap {
-    background: linear-gradient(45deg, #2a140b 50%, transparent 50%), 
-                linear-gradient(315deg, #2a140b 50%, transparent 50%);
-    background-size: 50% 100%;
-    background-repeat: no-repeat;
-    background-position: left bottom, right bottom;
-    top: 50%;
-    height: 50%;
-    z-index: 4;
-  }
-
-  .left-flap {
-    background: linear-gradient(135deg, #3a1e13 50%, transparent 50%),
-                linear-gradient(45deg, #3a1e13 50%, transparent 50%);
-    background-size: 50% 50%, 50% 50%;
-    background-repeat: no-repeat;
-    background-position: left top, left bottom;
-    z-index: 4;
-  }
-
-  .right-flap {
-    background: linear-gradient(225deg, #32190f 50%, transparent 50%),
-                linear-gradient(315deg, #32190f 50%, transparent 50%);
-    background-size: 50% 50%, 50% 50%;
-    background-repeat: no-repeat;
-    background-position: right top, right bottom;
-    z-index: 4;
-  }
-
-  /* WAX SEAL (MOHAR) */
-  .envelope-seal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90px;
-    height: 90px;
-    background: radial-gradient(circle, #8b0000 0%, #4a0000 100%);
-    border: 2px dashed #c5a85c;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    transition: all 0.5s ease;
-  }
-
-  .seal-txt {
-    color: #f0d78c;
-    font-family: 'Georgia', serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  /* THE WEDDING CARD INSIDE */
-  .envelope-card {
-    position: absolute;
-    width: 92%;
-    height: 92%;
-    top: 4%;
-    left: 4%;
-    background: #fbf9f4;
-    z-index: 2;
-    padding: 15px;
-    box-sizing: border-box;
-    transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease;
-    opacity: 0.5;
-    transform: translateY(0) scale(0.95);
-  }
-
-  .card-inner-frame {
-    width: 100%;
-    height: 100%;
-    border: 2px solid #c5a85c;
+    max-width: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    font-family: 'Georgia', serif;
-    color: #2b170c;
   }
 
-  .card-bismillah { font-size: 0.85rem; font-style: italic; color: #8a6d3b; margin: 0; }
-  .card-names-title { font-size: 1.8rem; margin: 8px 0; font-weight: 400; color: #1a0a02; }
-  .card-invite-txt { font-size: 0.8rem; color: #555; margin: 0 10px; }
-  .card-crown { color: #c5a85c; font-size: 1.2rem; margin: 5px 0; }
-  .card-hint { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #8a6d3b; margin: 5px 0 0 0; }
-
-  /* ================= MAGIC TRIGGER MECHANISM ================= */
-  /* Jaise hi user is box par mouse laye ya touch kare, sab automatic chalega */
-  .envelope-box:hover .top-flap, 
-  .envelope-box:active .top-flap,
-  .envelope-box:focus .top-flap {
-    transform: rotateX(180deg);
-    z-index: 1;
+  /* 3D RING BOX */
+  .ring-box-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+  }
+  .ring-box-wrapper:hover {
+    transform: scale(1.05) rotateY(10deg);
   }
 
-  .envelope-box:hover .envelope-seal,
-  .envelope-box:active .envelope-seal,
-  .envelope-box:focus .envelope-seal {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.5);
-  }
-
-  .envelope-box:hover .envelope-card,
-  .envelope-box:active .envelope-card,
-  .envelope-box:focus .envelope-card {
-    opacity: 1;
-    transform: translateY(-130px) scale(1.18);
-    z-index: 20;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
-  }
-
-  /* Puri Screen ko automatic gayab karne ka trigger taake main website dikhe */
-  .royal-overlay {
-    transition: opacity 0.8s ease 4s; /* Jab user touch karega toh 4 seconds baad screen fade out ho jayegi */
-  }
-  .envelope-box:hover ~ .royal-overlay,
-  .envelope-box:active ~ .royal-overlay {
-    opacity: 0;
-    pointer-events: none;
+  /* BOX PARTS WITH MATTE VELVET & GOLD EDGE */
+  .box-lid, .box-body {
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(135deg, #1f0505, #110202); /* Deep Royal Velvet Red */
+    border: 2px solid #f0d78c; /* Golden Rim */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.9), inset 0 0 15px rgba(240,215,140,0.2);
+    transition: transform 0.8s ease;
   }
   
-  /* Agar pura overlay gayab karna ho scroll ke liye */
-  .royal-overlay:active, .royal-overlay:focus-within {
-    animation: fadeOutScreen 1s ease 4s forwards;
+  .box-lid {
+    height: 50px;
+    top: 20px;
+    border-radius: 8px 8px 0 0;
+    transform-origin: top center;
+    z-index: 3;
+  }
+  
+  .box-body {
+    height: 70px;
+    top: 68px;
+    border-radius: 0 0 8px 8px;
+    z-index: 2;
   }
 
-  @keyframes fadeOutScreen {
-    to { opacity: 0; pointer-events: none; visibility: hidden; }
+  .box-cushion {
+    position: absolute;
+    width: 80%;
+    height: 20px;
+    background: #0c0202;
+    top: -10px;
+    left: 10%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
 
-  /* MOBILE RESPONSIVE STYLE */
-  @media (max-width: 480px) {
-    .envelope-box { width: 90%; height: 240px; }
-    .card-names-title { font-size: 1.4rem; }
-    .envelope-box:hover .envelope-card,
-    .envelope-box:active .envelope-card {
-      transform: translateY(-90px) scale(1.08);
-    }
+  .sparkle-ring {
+    font-size: 1.8rem;
+    transform: translateY(-5px);
+    text-shadow: 0 0 15px #fff;
+    animation: ringFloat 2s infinite ease-in-out;
+  }
+
+  .box-tap-hint {
+    position: absolute;
+    bottom: -40px;
+    width: 200px;
+    left: calc(50% - 100px);
+    text-align: center;
+    color: #f0d78c;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    animation: pulseGlow 1.5s infinite;
+  }
+
+  /* HOLOGRAM LIGHT BEAM EFFECT */
+  .light-beam {
+    position: absolute;
+    bottom: 300px;
+    width: 160px;
+    height: 0px;
+    background: linear-gradient(to top, rgba(240, 215, 140, 0.4) 0%, rgba(240, 215, 140, 0) 100%);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+    opacity: 0;
+    transition: height 1s ease 0.4s, opacity 0.8s ease 0.4s;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* PROJECTED HOLOGRAM CONTENT */
+  .holo-projection {
+    position: absolute;
+    bottom: 320px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0.8s;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .holo-crown {
+    font-size: 1.5rem;
+    color: #f0d78c;
+    text-shadow: 0 0 10px rgba(240, 215, 140, 0.6);
+    margin-bottom: 10px;
+  }
+
+  .holo-couple {
+    font-size: 2.8rem;
+    color: #fff;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(240,215,140,0.3);
+  }
+  
+  .and-sym {
+    font-size: 1.8rem;
+    color: #f0d78c;
+    font-style: italic;
+  }
+
+  .holo-divider {
+    width: 60px;
+    height: 1px;
+    background: #f0d78c;
+    margin: 20px auto;
+    box-shadow: 0 0 8px #f0d78c;
+  }
+
+  .holo-announcement {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: #f0d78c;
+  }
+
+  .holo-date {
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+
+  /* ANIMATION STATES WHEN CLICKED */
+  .holo-stage.unboxed .box-lid {
+    transform: rotateX(-110deg) translateY(-25px);
+  }
+  
+  .holo-stage.unboxed .box-cushion {
+    opacity: 1;
+  }
+
+  .holo-stage.unboxed .box-tap-hint {
+    opacity: 0;
+  }
+
+  .holo-stage.unboxed .light-beam {
+    height: 350px;
+    opacity: 1;
+  }
+
+  .holo-stage.unboxed .holo-projection {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* GLOBAL FADE OUT AFTER 5 SECONDS */
+  .holo-overlay.fade-out {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    pointer-events: none;
+  }
+
+  /* EXTRA KEYFRAMES */
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; text-shadow: 0 0 2px #f0d78c; }
+    50% { opacity: 1; text-shadow: 0 0 12px #f0d78c; }
+  }
+  @keyframes ringFloat {
+    0%, 100% { transform: translateY(-5px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
   }
 </style>
 
+<script>
+  function triggerHologramReveal() {
+    var stage = document.querySelector('.holo-stage');
+    var overlay = document.getElementById('premium-hologram-overlay');
+    
+    // Check lagayein ke bar bar click karne par animation glitch na ho
+    if(stage.classList.contains('unboxed')) return;
 
+    // 1. Box Open aur Hologram On karein
+    stage.classList.add('unboxed');
+    
+    // 2. Poori screen 5.5 seconds baad smoothly fade out ho kar aapki main layout show karegi
+    setTimeout(function() {
+      if(overlay) {
+        overlay.classList.add('fade-out');
+        setTimeout(function() {
+          overlay.style.display = 'none';
+        }, 1200);
+      }
+    }, 5500);
+  }
+</script>
+<!-- ================= END OF HOLOGRAM REVEAL ================= -->
+
+  
 <!-- ================= FILM GRAIN ================= -->
 <svg class="grain-overlay" aria-hidden="true">
   <filter id="grainFilter">
